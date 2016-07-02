@@ -30,18 +30,46 @@
 
   </head>
     <body ng-app="savedPlaces" layout="column">
-    
+
       <md-toolbar layout="row" >
         <h1>Saved Places</h1>
       </md-toolbar>
 
       <div flex layout="row">
 
-          <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2"></md-sidenav>
+        <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
+          <md-list>
 
-          <md-content flex id="content"></md-content>
+            <!-- List item #1 -->
+            <md-list-item >
+                <md-button>
+                  <md-icon md-svg-src="./assets/svg/avatar-1.svg" class="avatar"></md-icon>
+                  Lia Luogo
+                </md-button>
+            </md-list-item>
 
-  </div>
+            <!-- List item #2 -->
+            <md-list-item >
+                <md-button>
+                 <md-icon md-svg-src="./assets/svg/avatar-4.svg" class="avatar"></md-icon>
+                  Lawrence Ray
+                </md-button>
+            </md-list-item>
+
+          </md-list>
+        </md-sidenav>
+
+
+        <md-content flex id="content">
+          <!-- User details sample -->
+
+          <h2>Lia Luogo</h2>
+          <p>
+            I love cheese...
+          </p>
+        </md-content>
+
+      </div>
     </body>
   <!-- Framework -->
   <script src="./bower_components/angular/angular.js"></script>
