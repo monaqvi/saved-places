@@ -1,0 +1,23 @@
+{
+  "name": "saved-places",
+  "homepage": "https://github.com/smnaqvi89/saved-places",
+  "authors": [
+    "Muhammad Naqvi <naqvi.muhammad@gmail.com>"
+  ],
+  "description": "Save your favorite places and take notes on them",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.5.7",
+    "angular": "^1.5.7",
+    "angular-material": "^1.0.9"
+  }
+}
