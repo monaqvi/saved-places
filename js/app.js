@@ -1,5 +1,5 @@
 angular
-  .module('savedPlaces', ['ngMaterial', 'ngRoute'])
+  .module('savedPlaces', ['ngMaterial', 'ngRoute', 'categories'])
   .run(function($log){
     $log.debug("running");
   });
