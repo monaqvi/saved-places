@@ -47,24 +47,30 @@
       </md-toolbar>
 
       <div flex layout="row">
-          <md-sidenav md-is-locked-open="menuOpen" class="md-whiteframe-z2" md-component-id="left" md-disable-backdrop>
-          <div>
-            <md-button class="md-raised md-accent full-width">Explore</md-button>
-            <md-button class="md-raised md-primary full-width">Add Category</md-button>
-            <md-subheader class="md-primary">Categories</md-subheader>
-              <md-list>
+        <md-sidenav md-is-locked-open="menuOpen" class="md-whiteframe-z2" md-component-id="left" md-disable-backdrop>
+        <div>
+          <md-button class="md-raised md-accent full-width">Explore</md-button>
+          <md-button class="md-raised md-primary full-width" ng-click="addNewCategory()">Add Category</md-button>
+          <div ng-switch="addingNewCategory">
+            <md-input-container class="md-block fade" flex-gt-sm ng-switch-when="true">
+                       <label>New category</label>
+                       <input ng-model="newCategoryLabel">
+            </md-input-container>
+          </div>
+          <md-subheader class="md-primary">Categories</md-subheader>
+            <md-list>
 
-                <!-- List item #1 -->
-                <md-list-item ng-repeat="category in categories track by $index">
-                <h3> {{ category.label }} </h3>
-                <md-checkbox class="md-secondary" ng-model="category.wanted" aria-label="Checkbox"></md-checkbox>
-                    <md-divider></md-divider>
-                </md-list-item>
+              <!-- List item #1 -->
+              <md-list-item ng-repeat="category in categories track by $index">
+              <h3> {{ category.label }} </h3>
+              <md-checkbox class="md-secondary" ng-model="category.wanted" aria-label="Checkbox"></md-checkbox>
+                  <md-divider></md-divider>
+              </md-list-item>
 
-              </md-list>
-            </div>
+            </md-list>
+          </div>
 
-          </md-sidenav>
+        </md-sidenav>
 
         <md-content flex id="content">
         <div ng-controller="ContentCtrl as content" ng-cloak>
