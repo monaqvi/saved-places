@@ -31,11 +31,11 @@
     <!-- https://google.github.io/material-design-icons/ for more info -->
 
   </head>
-    <body ng-app="savedPlaces" layout="column">
+    <body ng-app="savedPlaces" layout="column" ng-controller="CategoriesCtrl">
 
       <md-toolbar class="md-hue-2">
         <div class="md-toolbar-tools">
-          <md-button class="md-icon-button" aria-label="Categories">
+          <md-button class="md-icon-button" aria-label="Categories" ng-click="toggleMenu()">
             <md-icon class="material-icons">&#xE896;</md-icon>
           </md-button>
           <h1>Saved Places</h1>
@@ -47,8 +47,8 @@
       </md-toolbar>
 
       <div flex layout="row">
-          <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
-          <div ng-controller="CategoriesCtrl">
+          <md-sidenav md-is-locked-open="false" class="md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-disable-backdrop>
+          <div>
             <md-button class="md-raised md-accent full-width">Explore</md-button>
             <md-button class="md-raised md-primary full-width">Add Category</md-button>
             <md-subheader class="md-primary">Categories</md-subheader>
@@ -57,7 +57,7 @@
                 <!-- List item #1 -->
                 <md-list-item ng-repeat="category in categories track by $index">
                 <h3> {{ category.label }} </h3>
-                <md-checkbox class="md-secondary" ng-model="category.wanted"></md-checkbox>
+                <md-checkbox class="md-secondary" ng-model="category.wanted" aria-label="Checkbox"></md-checkbox>
                     <md-divider></md-divider>
                 </md-list-item>
 

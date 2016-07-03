@@ -1,5 +1,5 @@
 angular.module('categories', ['ngMaterial'])
-  .controller('CategoriesCtrl', function($scope) {
+  .controller('CategoriesCtrl', function($scope, $mdSidenav) {
     $scope.categories = [
       {
         label: 'Restaurants'
@@ -11,4 +11,9 @@ angular.module('categories', ['ngMaterial'])
         label: 'Coffee shops'
       },
     ];
+
+    $scope.toggleMenu = function() {
+      console.log($mdSidenav('left'));
+      $mdSidenav('left').toggle();
+    }
   });
