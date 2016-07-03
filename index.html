@@ -27,7 +27,8 @@
 
     <!-- Custom fonts -->
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> 
+    <!-- https://google.github.io/material-design-icons/ for more info -->
 
   </head>
     <body ng-app="savedPlaces" layout="column">
@@ -55,14 +56,28 @@
 
 
         <md-content flex id="content">
-          <!-- User details sample -->
-
-          <h2>Category</h2>
-          <p>
-            Notes
-          </p>
-        </md-content>
-
+        <div ng-controller="ContentCtrl" ng-cloak>
+          <md-content class="md-padding" layout-xs="column" layout="row">
+            <div flex-xs flex-gt-xs="50" layout="column">
+              <md-card>
+                <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+                <md-card-title>
+                  <md-card-title-text>
+                    <span class="md-headline">Title</span>
+                  </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                  <p>
+                    Description...
+                  </p>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                  <md-button class="md-icon-button" aria-label="Edit">
+                    <md-icon class="material-icons">&#xE254;</md-icon>
+                  </md-button>
+                </md-card-actions>
+              </md-card>
+            </div>
       </div>
     </body>
   <!-- Framework -->
@@ -77,6 +92,7 @@
 
   <!-- Controllers -->
   <script src="./js/categories/controller.js"></script>
+  <script src="./js/content/controller.js"></script>
 
 
 </html>
