@@ -40,13 +40,12 @@
       <div flex layout="row">
           <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
             <div ng-controller="CategoriesCtrl">
-              <md-list ng-repeat="category in categories track by $index">
+              <md-list>
 
                 <!-- List item #1 -->
-                <md-list-item >
-                    <md-button>
-                      {{category.label}}
-                    </md-button>
+                <md-list-item ng-repeat="category in categories track by $index">
+                <h3> {{ category.label }} </h3>
+                <md-checkbox class="md-secondary" ng-model="category.wanted"></md-checkbox>
                     <md-divider></md-divider>
                 </md-list-item>
 
