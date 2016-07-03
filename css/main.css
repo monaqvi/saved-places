@@ -6,10 +6,22 @@ html, body {
   padding: 0px;
 }
 
+/* Sidenav area */
+
 md-list-item > button {
   width:100%;
+  height: 48px;
   text-align:left !important;
 }
+
+md-list .md-button.selected {
+  color: #03a9f4;
+}
+
+md-sidenav  md-list {
+  padding: 0px;
+}
+
 
 #content  {
   padding-left: 40px;

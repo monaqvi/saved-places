@@ -37,26 +37,21 @@
       </md-toolbar>
 
       <div flex layout="row">
+          <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
+            <div ng-controller="CategoriesCtrl">
+              <md-list ng-repeat="category in categories track by $index">
 
-        <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
-          <md-list>
+                <!-- List item #1 -->
+                <md-list-item >
+                    <md-button>
+                      {{category.label}}
+                    </md-button>
+                    <md-divider></md-divider>
+                </md-list-item>
 
-            <!-- List item #1 -->
-            <md-list-item >
-                <md-button>
-                  Category
-                </md-button>
-            </md-list-item>
-
-            <!-- List item #2 -->
-            <md-list-item >
-                <md-button>
-                  Category
-                </md-button>
-            </md-list-item>
-
-          </md-list>
-        </md-sidenav>
+              </md-list>
+            </div>
+          </md-sidenav>
 
 
         <md-content flex id="content">
