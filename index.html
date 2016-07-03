@@ -58,17 +58,17 @@
         <md-content flex id="content">
         <div ng-controller="ContentCtrl" ng-cloak>
           <md-content class="md-padding" layout-xs="column" layout="row">
-            <div flex-xs flex-gt-xs="50" layout="column">
+            <div flex-xs flex-gt-xs="50" layout="column" ng-repeat="place in places track by $index">
               <md-card>
-                <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+                <img ng-src="{{place.imagePath}}" class="md-card-image" alt="Picture">
                 <md-card-title>
                   <md-card-title-text>
-                    <span class="md-headline">Title</span>
+                    <span class="md-headline">{{place.title}}</span>
                   </md-card-title-text>
                 </md-card-title>
                 <md-card-content>
                   <p>
-                    Description...
+                    {{place.description}}
                   </p>
                 </md-card-content>
                 <md-card-actions layout="row" layout-align="end center">
