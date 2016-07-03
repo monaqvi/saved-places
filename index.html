@@ -48,6 +48,9 @@
 
       <div flex layout="row">
           <md-sidenav md-is-locked-open="true" class="md-whiteframe-z2">
+            <md-button class="md-raised md-accent">Explore</md-button>
+            <md-button class="md-raised md-primary">Add Category</md-button>
+            <md-subheader class="md-primary">Categories</md-subheader>
             <div ng-controller="CategoriesCtrl">
               <md-list>
 
@@ -61,7 +64,6 @@
               </md-list>
             </div>
           </md-sidenav>
-
 
         <md-content flex id="content">
         <div ng-controller="ContentCtrl as content" ng-cloak>
