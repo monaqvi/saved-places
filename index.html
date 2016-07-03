@@ -32,7 +32,7 @@
 
   </head>
     <body ng-app="savedPlaces" layout="column" ng-controller="CategoriesCtrl">
-
+      
       <md-toolbar class="md-hue-2">
         <div class="md-toolbar-tools">
           <md-button class="md-icon-button" aria-label="Categories" ng-click="toggleMenu()">
@@ -47,7 +47,7 @@
       </md-toolbar>
 
       <div flex layout="row">
-          <md-sidenav md-is-locked-open="false" class="md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-disable-backdrop>
+          <md-sidenav md-is-locked-open="menuOpen" class="md-whiteframe-z2" md-component-id="left" md-disable-backdrop>
           <div>
             <md-button class="md-raised md-accent full-width">Explore</md-button>
             <md-button class="md-raised md-primary full-width">Add Category</md-button>

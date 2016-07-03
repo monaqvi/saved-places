@@ -1,5 +1,6 @@
 angular.module('categories', ['ngMaterial'])
-  .controller('CategoriesCtrl', function($scope, $mdSidenav) {
+  .controller('CategoriesCtrl', function($scope, $mdSidenav, $mdMedia) {
+    $scope.menuOpen = $mdMedia('gt-md');
     $scope.categories = [
       {
         label: 'Restaurants'
@@ -13,7 +14,6 @@ angular.module('categories', ['ngMaterial'])
     ];
 
     $scope.toggleMenu = function() {
-      console.log($mdSidenav('left'));
-      $mdSidenav('left').toggle();
+      $scope.menuOpen = !$scope.menuOpen;
     }
   });
