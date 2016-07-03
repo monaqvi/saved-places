@@ -30,6 +30,7 @@ md-sidenav  md-list {
 
 /*Resizing main buttons*/
 .md-icon-button.md-36 { height:52px; width:52px; }
+.md-icon-button.md-48 { height:64px; width:64px; }
 
 /* Rules for sizing icons. */
 .material-icons.md-18 { font-size: 18px; }
