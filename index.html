@@ -33,8 +33,17 @@
   </head>
     <body ng-app="savedPlaces" layout="column">
 
-      <md-toolbar layout="row" >
-        <h1>Saved Places</h1>
+      <md-toolbar class="md-hue-2">
+        <div class="md-toolbar-tools">
+          <md-button class="md-icon-button" aria-label="Categories">
+            <md-icon class="material-icons">&#xE896;</md-icon>
+          </md-button>
+          <h1>Saved Places</h1>
+          <span flex></span>
+          <md-button class="md-icon-button md-36" aria-label="Add Place" ng-disabled="false">
+            <md-icon class="material-icons md-36">&#xE147;</md-icon>
+          </md-button>
+        </div>
       </md-toolbar>
 
       <div flex layout="row">
