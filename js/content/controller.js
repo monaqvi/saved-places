@@ -1,6 +1,6 @@
 angular.module('content', ['ngMaterial'])
 .controller('ContentCtrl', function($scope) {
-  $scope.places = [
+  this.places = [
     {
       title: 'Title 1',
       description: 'Description here...',

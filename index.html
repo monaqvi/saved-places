@@ -56,9 +56,9 @@
 
 
         <md-content flex id="content">
-        <div ng-controller="ContentCtrl" ng-cloak>
+        <div ng-controller="ContentCtrl as content" ng-cloak>
           <md-content class="md-padding" layout-xs="column" layout="row">
-            <div flex-xs flex-gt-xs="50" layout="column" ng-repeat="place in places track by $index">
+            <div flex-xs flex-gt-xs="50" layout="column" ng-repeat="place in content.places track by $index">
               <md-card>
                 <img ng-src="{{place.imagePath}}" class="md-card-image" alt="Picture">
                 <md-card-title>
