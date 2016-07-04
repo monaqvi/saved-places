@@ -56,7 +56,7 @@
                 <label>Category name</label>
                 <input required name="categoryName" ng-model="$parent.categoryName" required category-validater esc-key autofocus>
                 <div ng-messages="categoryForm.categoryName.$error">
-                  <div ng-message="required">This is required.</div>
+                  <div ng-message="required">Cannot be blank.</div>
                   <div ng-message="duplicateLabel">This category already exists.</div>
                 </div>
               </md-input-container>

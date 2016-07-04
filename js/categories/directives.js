@@ -6,7 +6,7 @@ angular.module('categories')
      restrict: 'A',
     // element must have ng-model attribute.
      require: 'ngModel',
-     link: function(scope, ele, attrs, ctrl){
+     link: function(scope, element, attrs, ctrl){
 
         // add a parser that will process each time the value is
         // parsed into the model when the user updates it.
@@ -27,24 +27,27 @@ angular.module('categories')
     }
   })
   .directive('escKey', function () {
-    return function (scope, element, attrs) {
-      element.bind('keydown keypress', function (event) {
-        if(event.which === 27) { // 27 = esc key
-          scope.$apply(function (){
-            console.log('hi');
-          });
+    return {
+      restrict: 'A',
+      link : function(scope, element) {
+        element.bind('keydown keypress', function (event) {
+          if(event.which === 27) { // 27 = esc key
+            scope.$apply(function (){
+              scope.resetNewCategory();
+            });
 
-          event.preventDefault();
-        }
-      });
-    };
+            event.preventDefault();
+          }
+        });
+      }
+    }
   })
   .directive('autofocus', ['$timeout', function($timeout) {
     return {
       restrict: 'A',
-      link : function($scope, $element) {
+      link : function(scope, element) {
         $timeout(function() {
-          $element[0].focus();
+          element[0].focus();
         });
       }
     }

@@ -23,19 +23,18 @@ angular.module('categories', ['ngMaterial', 'ngMessages'])
 
     $scope.toggleNewCategoryInput = function() {
       $scope.addingNewCategory = !$scope.addingNewCategory;
-      if ($scope.addingNewCategory) {
-        console.log($scope.categoryForm);
-      }
     }
 
     $scope.createNewCategory = function() {
-      $scope.toggleNewCategoryInput();
       $scope.categories.push({
         label: $scope.categoryName,
         wanted: false,
       });
+      $scope.resetNewCategory();
+    }
+
+    $scope.resetNewCategory = function() {
+      $scope.toggleNewCategoryInput();
       $scope.categoryName = '';
-      $scope.categoryForm.$setPristine();
-      $scope.categoryForm.$setUntouched();
     }
   });
