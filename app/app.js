@@ -1,5 +1,5 @@
 angular
-  .module('savedPlaces', ['ngMaterial', 'ngRoute', 'categories', 'content'])
+  .module('savedPlaces', ['ngMaterial', 'ngRoute', 'categories', 'content', 'explore'])
   .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');
 
@@ -13,10 +13,10 @@ angular
       //   templateUrl: 'partials/phone-detail.html',
       //   controller: 'PlaceDetailCtrl'
       // }).
-      // when('/explore', {
-      //   templateUrl: 'partials/phone-detail.html',
-      //   controller: 'ExploreCtrl'
-      // }).
+      when('/explore', {
+        template: '<nearby-places></nearby-places>',
+        controller: 'ExploreCtrl'
+      }).
       otherwise({
         redirectTo: '/places'
       });
