@@ -19,6 +19,7 @@ angular.module('categories', ['ngMaterial', 'ngMessages'])
 
     $scope.toggleMenu = function() {
       $scope.menuOpen = !$scope.menuOpen;
+      if ($scope.menuOpen) $scope.resetNewCategory();
     }
 
     $scope.toggleNewCategoryInput = function() {
@@ -34,7 +35,7 @@ angular.module('categories', ['ngMaterial', 'ngMessages'])
     }
 
     $scope.resetNewCategory = function() {
-      $scope.toggleNewCategoryInput();
+      $scope.addingNewCategory = false;
       $scope.categoryName = '';
     }
   });
