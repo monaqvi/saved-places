@@ -52,7 +52,7 @@
           <md-button class="md-raised md-accent full-width">Explore</md-button>
           <md-button class="md-raised md-primary full-width" ng-click="addNewCategory()">Add Category</md-button>
           <div ng-switch="addingNewCategory">
-            <form name="categoryForm" novalidate>
+            <form name="categoryForm" novalidate ng-submit="categoryForm.$valid && createNewCategory()">
               <md-input-container class="md-block">
                 <label>Category name</label>
                 <input required name="categoryName" ng-model="categoryName" required category-validater>

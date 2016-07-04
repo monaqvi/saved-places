@@ -17,14 +17,19 @@ angular.module('categories', ['ngMaterial', 'ngMessages'])
       },
     ];
 
-    $scope.categoriesLabels = $scope.categories
-                                    .map(function(category) { return category.label; });
-
     $scope.toggleMenu = function() {
       $scope.menuOpen = !$scope.menuOpen;
     }
 
     $scope.addNewCategory = function() {
       $scope.addingNewCategory = !$scope.addingNewCategory;
+    }
+
+    $scope.createNewCategory = function() {
+      $scope.categories.push({
+        label: $scope.categoryName,
+        wanted: false,
+      });
+      $scope.categoryName = '';
     }
   });

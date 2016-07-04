@@ -13,7 +13,8 @@ angular.module('categories')
                 ctrl.$parsers.unshift(function(value) {
                   if(value){
                     // test and set the validity after update.
-                    var valid = scope.categoriesLabels.indexOf(value) === -1;
+                    var categoriesLabels = scope.categories.map(function(category) { return category.label; });
+                    var valid = categoriesLabels.indexOf(value) === -1;
                     ctrl.$setValidity('duplicateLabel', valid);
                   }
 
