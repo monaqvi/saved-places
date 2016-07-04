@@ -4,13 +4,16 @@ angular.module('categories', ['ngMaterial'])
     $scope.addingNewCategory = false;
     $scope.categories = [
       {
-        label: 'Restaurants'
+        label: 'Restaurants',
+        wanted: false,
       },
       {
-        label: 'Bars'
+        label: 'Bars',
+        wanted: false,
       },
       {
-        label: 'Coffee shops'
+        label: 'Coffee shops',
+        wanted: false,
       },
     ];
 

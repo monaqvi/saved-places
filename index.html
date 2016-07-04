@@ -66,7 +66,7 @@
             <md-list>
 
               <md-list-item ng-repeat="category in categories track by $index">
-              <h3> {{ category }} </h3>
+              <h3> {{ category.label }} </h3>
               <md-checkbox class="md-secondary" ng-model="category.wanted" aria-label="Checkbox"></md-checkbox>
                   <md-divider></md-divider>
               </md-list-item>
