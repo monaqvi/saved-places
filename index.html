@@ -31,7 +31,7 @@
     <!-- https://google.github.io/material-design-icons/ for more info -->
 
   </head>
-    <body ng-app="savedPlaces" layout="column" ng-controller="CategoriesCtrl">
+    <body ng-app="savedPlaces" layout="column" ng-controller="CategoriesCtrl" ng-cloak>
       
       <md-toolbar class="md-hue-2">
         <div class="md-toolbar-tools">
@@ -93,6 +93,9 @@
   <script src="./app/categories/module.js"></script>
   <script src="./app/content/module.js"></script>
   <script src="./app/explore/module.js"></script>
+
+  <!-- Components -->
+  <script src="./app/explore/component.js"></script>
 
   <!-- Controllers -->
   <script src="./app/categories/controller.js"></script>

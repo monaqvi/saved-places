@@ -15,7 +15,6 @@ angular
       // }).
       when('/explore', {
         template: '<nearby-places></nearby-places>',
-        controller: 'ExploreCtrl'
       }).
       otherwise({
         redirectTo: '/places'
