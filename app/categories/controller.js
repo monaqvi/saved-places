@@ -1,4 +1,4 @@
-angular.module('categories', ['ngMaterial', 'ngMessages'])
+angular.module('categories')
   .controller('CategoriesCtrl', function($scope, $mdSidenav, $mdMedia) {
     $scope.menuOpen = $mdMedia('gt-md');
     $scope.addingNewCategory = false;
