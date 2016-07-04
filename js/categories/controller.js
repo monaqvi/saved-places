@@ -1,4 +1,4 @@
-angular.module('categories', ['ngMaterial'])
+angular.module('categories', ['ngMaterial', 'ngMessages'])
   .controller('CategoriesCtrl', function($scope, $mdSidenav, $mdMedia) {
     $scope.menuOpen = $mdMedia('gt-md');
     $scope.addingNewCategory = false;
@@ -16,6 +16,9 @@ angular.module('categories', ['ngMaterial'])
         wanted: false,
       },
     ];
+
+    $scope.categoriesLabels = $scope.categories
+                                    .map(function(category) { return category.label; });
 
     $scope.toggleMenu = function() {
       $scope.menuOpen = !$scope.menuOpen;
