@@ -52,17 +52,21 @@
           <md-button class="md-raised md-accent full-width">Explore</md-button>
           <md-button class="md-raised md-primary full-width" ng-click="addNewCategory()">Add Category</md-button>
           <div ng-switch="addingNewCategory">
-            <md-input-container class="md-block fade" flex-gt-sm ng-switch-when="true">
-                       <label>New category</label>
-                       <input ng-model="newCategoryLabel">
-            </md-input-container>
+            <form name="categoryForm">
+              <md-input-container class="md-block">
+                <label>Client Name</label>
+                <input required name="categoryName" ng-model="categoryName" required>
+                <div ng-messages="categoryForm.categoryName.$error">
+                  <div ng-message="required">This is required.</div>
+                </div>
+              </md-input-container>
+            </form>
           </div>
           <md-subheader class="md-primary">Categories</md-subheader>
             <md-list>
 
-              <!-- List item #1 -->
               <md-list-item ng-repeat="category in categories track by $index">
-              <h3> {{ category.label }} </h3>
+              <h3> {{ category }} </h3>
               <md-checkbox class="md-secondary" ng-model="category.wanted" aria-label="Checkbox"></md-checkbox>
                   <md-divider></md-divider>
               </md-list-item>
