@@ -1,4 +1,4 @@
-angular.module('content', ['ngMaterial'])
+angular.module('content')
 .controller('ContentCtrl', function($scope) {
   this.places = [
     {
