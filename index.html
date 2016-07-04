@@ -50,20 +50,18 @@
         <md-sidenav md-is-locked-open="menuOpen" class="md-whiteframe-z2" md-component-id="left" md-disable-backdrop>
         <div>
           <md-button class="md-raised md-accent full-width">Explore</md-button>
-          <md-button class="md-raised md-primary full-width" ng-click="addNewCategory()">Add Category</md-button>
-          <div ng-switch="addingNewCategory">
-            <form name="categoryForm" novalidate ng-submit="categoryForm.$valid && createNewCategory()">
+          <md-button class="md-raised md-primary full-width" ng-click="toggleNewCategoryInput()">Add Category</md-button>
+            <form ng-if="addingNewCategory" name="categoryForm" novalidate ng-submit="categoryForm.$valid && createNewCategory()">
               <md-input-container class="md-block">
                 <label>Category name</label>
-                <input required name="categoryName" ng-model="categoryName" required category-validater>
+                <input required name="categoryName" ng-model="$parent.categoryName" required category-validater esc-key autofocus>
                 <div ng-messages="categoryForm.categoryName.$error">
                   <div ng-message="required">This is required.</div>
                   <div ng-message="duplicateLabel">This category already exists.</div>
                 </div>
               </md-input-container>
             </form>
-          </div>
-          <md-subheader class="md-primary">Categories</md-subheader>
+          <md-subheader class="md-primary category">Categories</md-subheader>
             <md-list>
 
               <md-list-item ng-repeat="category in categories track by $index">

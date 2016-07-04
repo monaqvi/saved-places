@@ -21,15 +21,21 @@ angular.module('categories', ['ngMaterial', 'ngMessages'])
       $scope.menuOpen = !$scope.menuOpen;
     }
 
-    $scope.addNewCategory = function() {
+    $scope.toggleNewCategoryInput = function() {
       $scope.addingNewCategory = !$scope.addingNewCategory;
+      if ($scope.addingNewCategory) {
+        console.log($scope.categoryForm);
+      }
     }
 
     $scope.createNewCategory = function() {
+      $scope.toggleNewCategoryInput();
       $scope.categories.push({
         label: $scope.categoryName,
         wanted: false,
       });
       $scope.categoryName = '';
+      $scope.categoryForm.$setPristine();
+      $scope.categoryForm.$setUntouched();
     }
   });
