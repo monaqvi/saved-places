@@ -22,23 +22,26 @@ angular.module('savedPlaces')
       }
     }
   }])
-  .factory('googlePlaces', ['$window', '$resource', 'apiKeys', function ($window, $resource, apiKeys) {
+  .factory('googlePlaces', ['$window', '$resource', 'apiKeys', 'NgMap', function ($window, $resource, apiKeys, NgMap) {
     // API key as closure variable so asks only once
+    // Keys in seperate factory to avoid publishing to Github, still visible in Source code -- can use server-side codes to avoid this
     // Prompt to enter API key if user has forgotten to create new app/api/keys.js file
       // Keep asking if not provided
     var apiKey = (apiKeys.googlePlaces === 'API KEY HERE') ?
         askForAPIKey($window) :
         apiKeys.googlePlaces;
 
-    return {
-      getNearbyPlaces: getNearbyPlaces,
-    }
+    var params = {
+      key: apiKey,
+      libraries: 'places',
+    };
+
+    return 'https://maps.google.com/maps/api/js?' + Object.keys(params)
+                                                          .map(function(key) { return key + '=' + params[key]; })
+                                                          .join('&');
 
     function askForAPIKey($window) {
       var ans = $window.prompt('Input your Google API key');
       return ans ? ans : askForAPIKey($window);
-    }
-
-    function getNearbyPlaces($resource) {
     }
   }]);

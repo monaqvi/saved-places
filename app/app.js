@@ -3,6 +3,7 @@ angular
     'ngMaterial',
     'ngRoute',
     'ngResource',
+    'ngMap',
     'categories',
     'content',
     'explore',

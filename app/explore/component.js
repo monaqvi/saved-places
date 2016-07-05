@@ -7,7 +7,7 @@ angular.module('explore')
           geoLocator.getCurrentPosition();
       };
 
-      googlePlaces.getNearbyPlaces();
+      this.googleMapsUrl = googlePlaces;
 
       this.places = [
         {
