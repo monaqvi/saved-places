@@ -14,9 +14,12 @@ angular.module('explore')
                   if (geo.coords) return self.center = geo.coords.latitude + ',' + geo.coords.longitude; 
                 });
 
-      googlePlaces;
+      googlePlaces.query()
+                  .then(function(places) {
+                    // self.places = places;
+                  });
 
-      self.places = [
+      this.places = [
         {
           title: 'Title 1',
           description: 'Description here...',
@@ -27,6 +30,27 @@ angular.module('explore')
           description: 'Description here...',
           imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
         },
-      ];
+        {
+          title: 'Title 2',
+          description: 'Description here...',
+          imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
+        },
+        {
+          title: 'Title 2',
+          description: 'Description here...',
+          imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
+        },
+        {
+          title: 'Title 2',
+          description: 'Description here...',
+          imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
+        },
+        {
+          title: 'Title 2',
+          description: 'Description here...',
+          imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
+        },
+      ]
+
     }],
   });
