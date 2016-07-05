@@ -3,13 +3,17 @@ angular.module('explore')
   .component('nearbyPlaces', {
     templateUrl: './app/explore/template.html',
     controller: ['$routeParams', 'geoLocator', 'googlePlaces', function ExploreCtrl($routeParams, geoLocator, googlePlaces) {
-      function captureUserLocation() {
-          geoLocator.getCurrentPosition();
-      };
+      var self = this;
+      var center = '41.850033,-87.6500523';
 
-      this.googleMapsUrl = googlePlaces;
+      self.googleMapsUrl = googlePlaces;
+      self.center = center;
+      geoLocator.getCurrentPosition()
+                .then(function(geo) {
+                  if (geo.coords) return self.center = geo.coords.latitude + ',' + geo.coords.longitude; 
+                });
 
-      this.places = [
+      self.places = [
         {
           title: 'Title 1',
           description: 'Description here...',
