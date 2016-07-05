@@ -22,11 +22,16 @@ angular.module('savedPlaces')
       }
     }
   }])
-  .factory('googlePlaces', ['$resource', function ($resource) {
+  .factory('googlePlaces', ['$window', function ($window) {
+    // API key as closure variable so asks only once
+    var apiKey = $window.prompt('Input your Google API key');
+
     return {
-        getNearbyPlaces: getNearbyPlaces
-    };
+      getNearbyPlaces: getNearbyPlaces,
+    }
 
     function getNearbyPlaces() {
+      
     }
+
   }]);
