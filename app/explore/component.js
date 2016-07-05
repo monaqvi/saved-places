@@ -2,10 +2,12 @@
 angular.module('explore')
   .component('nearbyPlaces', {
     templateUrl: './app/explore/template.html',
-    controller: ['$routeParams', 'geoLocator', function ExploreCtrl($routeParams, geoLocator) {
+    controller: ['$routeParams', 'geoLocator', 'googlePlaces', function ExploreCtrl($routeParams, geoLocator, googlePlaces) {
       function captureUserLocation() {
           geoLocator.getCurrentPosition();
       };
+
+      googlePlaces.getNearbyPlaces();
 
       this.places = [
         {
