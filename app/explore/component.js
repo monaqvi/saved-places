@@ -2,11 +2,11 @@
 angular.module('explore')
   .component('nearbyPlaces', {
     templateUrl: './app/explore/template.html',
-    controller: ['$routeParams', 'geoLocator', 'googlePlaces', function ExploreCtrl($routeParams, geoLocator, googlePlaces) {
+    controller: ['$routeParams', 'geoLocator', 'googleMaps', function ExploreCtrl($routeParams, geoLocator, googleMaps) {
       var self = this;
       var center = '41.850033,-87.6500523';
 
-      self.googleMapsUrl = googlePlaces;
+      self.googleMapsUrl = googleMaps;
       self.center = center;
       geoLocator.getCurrentPosition()
                 .then(function(geo) {

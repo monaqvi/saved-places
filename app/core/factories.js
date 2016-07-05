@@ -22,7 +22,7 @@ angular.module('savedPlaces')
       }
     }
   }])
-  .factory('googlePlaces', ['$window', '$resource', 'apiKeys', 'NgMap', function ($window, $resource, apiKeys, NgMap) {
+  .factory('googleMaps', ['$window', 'apiKeys', 'NgMap', function ($window, apiKeys, NgMap) {
     // API key as closure variable so asks only once
     // Keys in seperate factory to avoid publishing to Github, still visible in Source code -- can use server-side codes to avoid this
     // Prompt to enter API key if user has forgotten to create new app/api/keys.js file
