@@ -3,9 +3,9 @@ angular.module('explore')
   .component('nearbyPlaces', {
     templateUrl: './app/explore/template.html',
     controller: ['$routeParams', 'geoLocator', function ExploreCtrl($routeParams, geoLocator) {
-      (function captureUserLocation() {
-          geoLocator.getCurrentPosition().then(console.log);
-      })();
+      function captureUserLocation() {
+          geoLocator.getCurrentPosition();
+      };
 
       this.places = [
         {
