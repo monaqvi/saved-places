@@ -11,12 +11,14 @@ angular.module('savedPlaces')
         deferred.reject('Geolocation not supported.');
       } else {
         $window.navigator.geolocation.getCurrentPosition(
-            function (position) {
-                deferred.resolve(position);
-            },
-            function (err) {
-                deferred.reject(err);
-            });
+          function (position) {
+            // console.log(position);
+            deferred.resolve(position);
+          },
+          function (err) {
+            deferred.reject(err);
+          }
+        );
       }
       return deferred.promise;
     }
