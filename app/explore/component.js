@@ -14,43 +14,59 @@ angular.module('explore')
                   if (geo.coords) return self.center = geo.coords.latitude + ',' + geo.coords.longitude; 
                 });
 
+      // Use closures to avoid repetitive access to len property
+      var choices = ['sm', 'md', 'lg'];
+      var numChoices = choices.length;
+      var randomSizer = function() {
+        return choices[Math.floor(Math.random() * numChoices)];
+      };
+
       googlePlaces.query()
                   .then(function(places) {
-                    // self.places = places;
-                  });
+                    places = [
+                      {
+                        title: 'Title 1',
+                        description: 'Description here...',
+                        imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
+                      },
+                      {
+                        title: 'Title 2',
+                        description: 'Description here...',
+                        imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
+                      },
+                      {
+                        title: 'Title 2',
+                        description: 'Description here...',
+                        imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
+                      },
+                      {
+                        title: 'Title 2',
+                        description: 'Description here...',
+                        imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
+                      },
+                      {
+                        title: 'Title 2',
+                        description: 'Description here...',
+                        imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
+                      },
+                      {
+                        title: 'Title 2',
+                        description: 'Description here...',
+                        imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
+                      },
+                      {
+                        title: 'Title 2',
+                        description: 'Description here...',
+                        imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
+                      },
+                    ]
 
-      this.places = [
-        {
-          title: 'Title 1',
-          description: 'Description here...',
-          imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
-        },
-        {
-          title: 'Title 2',
-          description: 'Description here...',
-          imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
-        },
-        {
-          title: 'Title 2',
-          description: 'Description here...',
-          imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
-        },
-        {
-          title: 'Title 2',
-          description: 'Description here...',
-          imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
-        },
-        {
-          title: 'Title 2',
-          description: 'Description here...',
-          imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
-        },
-        {
-          title: 'Title 2',
-          description: 'Description here...',
-          imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
-        },
-      ]
+                    // Alternate properly based on 2-panel view -- doing it here is faster than using ng-if within ng-repeat
+                      // Bitwise check for odd #s is faster than modulo
+                    places.forEach(function(element) { element.size = randomSizer(); });
+                    self.oddPlaces = places.filter(function(element, i) { return (i & 1); });
+                    self.evenPlaces = places.filter(function(element, i) { return !(i & 1); });
+                  });
 
     }],
   });

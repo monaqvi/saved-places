@@ -1,18 +1,17 @@
 <div>
   <div layout="column" class="md-padding" map-lazy-load="{{$ctrl.googleMapsUrl}}" map-lazy-load-params="{{$ctrl.googleMapsUrl}}">
-    <div id="floating-panel">HI</div>
     <ng-map center="{{$ctrl.center}}" zoom="13"></ng-map>
   </div>
   <md-content class="md-padding" layout-xs="column" layout="row">
     <div flex-xs flex-gt-xs="50" layout="column">
-      <md-card ng-repeat="place in $ctrl.places track by $index">
+      <md-card class="fade" ng-repeat="place in $ctrl.oddPlaces track by $index">
         <md-card-title>
           <md-card-title-text>
             <span class="md-headline">Card with image</span>
-            <span class="md-subhead">Large</span>
+            <span class="md-subhead">{{place.size}}</span>
           </md-card-title-text>
           <md-card-title-media>
-            <div class="md-media-lg card-media"></div>
+            <div class="md-media-{{place.size}} card-media"></div>
           </md-card-title-media>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">
@@ -22,29 +21,14 @@
       </md-card>
     </div>
     <div flex-xs flex-gt-xs="50" layout="column">
-      <md-card md-theme="{{ showDarkTheme ? 'dark-purple' : 'default' }}" md-theme-watch>
+      <md-card class="fade" ng-repeat="place in $ctrl.evenPlaces track by $index">
         <md-card-title>
           <md-card-title-text>
             <span class="md-headline">Card with image</span>
-            <span class="md-subhead">Small</span>
+            <span class="md-subhead">{{place.size}}</span>
           </md-card-title-text>
           <md-card-title-media>
-            <div class="md-media-sm card-media"></div>
-          </md-card-title-media>
-        </md-card-title>
-        <md-card-actions layout="row" layout-align="end center">
-          <md-button>Action 1</md-button>
-          <md-button>Action 2</md-button>
-        </md-card-actions>
-      </md-card>
-      <md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-headline">Card with image</span>
-            <span class="md-subhead">Medium</span>
-          </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-md card-media"></div>
+            <div class="md-media-{{place.size}} card-media"></div>
           </md-card-title-media>
         </md-card-title>
         <md-card-actions layout="row" layout-align="end center">

@@ -2,7 +2,7 @@ angular
   .module('savedPlaces', [
     'ngMaterial',
     'ngRoute',
-    'ngResource',
+    'ngAnimate',
     'ngMap',
     'categories',
     'content',
