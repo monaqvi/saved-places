@@ -2,7 +2,8 @@
 angular.module('explore')
   .component('nearbyPlaces', {
     templateUrl: './app/explore/template.html',
-    controller: ['$routeParams', 'geoLocator', 'googleMaps', function ExploreCtrl($routeParams, geoLocator, googleMaps) {
+    controller: ['$routeParams', 'geoLocator', 'googleMaps', 'googlePlaces',
+    function ExploreCtrl($routeParams, geoLocator, googleMaps, googlePlaces) {
       var self = this;
       var center = '41.850033,-87.6500523';
 
@@ -12,6 +13,8 @@ angular.module('explore')
                 .then(function(geo) {
                   if (geo.coords) return self.center = geo.coords.latitude + ',' + geo.coords.longitude; 
                 });
+
+      googlePlaces;
 
       self.places = [
         {
