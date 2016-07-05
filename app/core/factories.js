@@ -22,16 +22,17 @@ angular.module('savedPlaces')
       }
     }
   }])
-  .factory('googlePlaces', ['$window', function ($window) {
+  .factory('googlePlaces', ['$window', '$resource', 'apiKeys', function ($window, $resource, apiKeys) {
     // API key as closure variable so asks only once
-    var apiKey = $window.prompt('Input your Google API key');
+    // Prompt to enter API key if user has forgotten to create new app/api/keys.js file
+    var apiKey = (apiKeys.googlePlaces === 'API KEY HERE') ?
+        $window.prompt('Input your Google API key') :
+        apiKeys.googlePlaces;
 
     return {
       getNearbyPlaces: getNearbyPlaces,
     }
 
-    function getNearbyPlaces() {
-      
+    function getNearbyPlaces($resource) {
     }
-
   }]);
