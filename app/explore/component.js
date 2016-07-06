@@ -2,8 +2,8 @@
 angular.module('explore')
   .component('nearbyPlaces', {
     templateUrl: './app/explore/template.html',
-    controller: ['$routeParams', '$timeout', '$mdDialog', 'geoLocator', 'googleMaps', 'googlePlaces',
-    function ExploreCtrl($routeParams, $timeout, $mdDialog, geoLocator, googleMaps, googlePlaces) {
+    controller: ['$routeParams', '$timeout', '$mdDialog', 'geoLocator', 'googleMaps', 'googlePlaces', 'debounce',
+    function ExploreCtrl($routeParams, $timeout, $mdDialog, geoLocator, googleMaps, googlePlaces, debounce) {
       var self = this;
 
       self.googleMapsUrl = googleMaps;
@@ -15,30 +15,6 @@ angular.module('explore')
                 });
 
       self.debouncedQueryGooglePlaces = debounce(queryGooglePlaces, 500);
-
-      function debounce(func, wait, immediate, begAndEnd) {
-        var timeout;
-        // Return function that has access to timeout closure variable
-        return function() {
-          // Keep track of these so can be used within setTimeout
-          var self = this, args = arguments;
-
-          var callNow = immediate && !timeout;
-          // Clear the previous timeout
-          clearTimeout(timeout);
-          // Set the new timeout
-          timeout = setTimeout(later, wait);
-          if (callNow) func.apply(self, args);
-
-          function later() {
-            // Reset timeout
-            timeout = null;
-            // If hasn't already been called immediately, call the function now
-            // If has been called immediately, but begAndEnd flag is on, call again anyway so the end query is captured
-            if ((immediate && begAndEnd) || !immediate) func.apply(self, args);
-          }
-        };
-      }
 
       function queryGooglePlaces(keywords) {
         googlePlaces.query(keywords)
