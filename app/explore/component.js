@@ -9,10 +9,14 @@ angular.module('explore')
       self.googleMapsUrl = googleMaps;
       self.keywords = '';
       self.center = '41.850033,-87.6500523';
+      self.oddPlaces = [], self.evenPlaces = [];
       geoLocator.getCurrentPosition()
                 .then(function(geo) {
-                  if (geo.coords) return self.center = geo.coords.latitude + ',' + geo.coords.longitude; 
-                });
+                  if (geo.coords) self.center = geo.coords.latitude + ',' + geo.coords.longitude; 
+                  return;
+                })
+                 // Load once at start with no keywords
+                .then(queryGooglePlaces);
 
       self.debouncedQueryGooglePlaces = debounce(queryGooglePlaces, 500);
 
@@ -20,17 +24,16 @@ angular.module('explore')
         var q = googlePlaces.query(keywords, updatePlaceCards);
         
         function updatePlaceCards(err, data) {
-          if (err) {
-            return alertNoneFound(data);
-          }
+          if (err) return alertNoneFound(data);
           var places = data;
-          // Alternate properly based on 2-panel view -- doing it here is faster than using ng-if within ng-repeat
-            // Bitwise check for odd #s is faster than modulo
           console.log(places.length + ' places found!');
           console.log(places);
+          // Alternate properly based on 2-panel view -- doing it here is faster than using ng-if within ng-repeat
+            // Bitwise check for odd #s is faster than modulo
+            // Retain old data, push to bottom
           places.forEach(function(element, index) { element.size = randomSizer(index); });
-          self.oddPlaces = places.filter(function(element, i) { return !!(i & 1); });
-          self.evenPlaces = places.filter(function(element, i) { return !(i & 1); });
+          self.oddPlaces = places.filter(function(element, i) { return !!(i & 1); }).concat(self.oddPlaces);
+          self.evenPlaces = places.filter(function(element, i) { return !(i & 1); }).concat(self.evenPlaces);
         }
       }
     }],
