@@ -2,17 +2,55 @@
 angular.module('explore')
   .component('nearbyPlaces', {
     templateUrl: './app/explore/template.html',
-    controller: ['$routeParams', 'geoLocator', 'googleMaps', 'googlePlaces',
-    function ExploreCtrl($routeParams, geoLocator, googleMaps, googlePlaces) {
+    controller: ['$routeParams', '$timeout', 'geoLocator', 'googleMaps', 'googlePlaces',
+    function ExploreCtrl($routeParams, $timeout, geoLocator, googleMaps, googlePlaces) {
       var self = this;
-      var center = '41.850033,-87.6500523';
 
       self.googleMapsUrl = googleMaps;
-      self.center = center;
+      self.keywords = '';
+      self.center = '41.850033,-87.6500523';
       geoLocator.getCurrentPosition()
                 .then(function(geo) {
                   if (geo.coords) return self.center = geo.coords.latitude + ',' + geo.coords.longitude; 
                 });
+
+      self.debouncedQueryGooglePlaces = debounce(queryGooglePlaces, 500);
+
+      function debounce(func, wait, immediate, begAndEnd) {
+        var timeout;
+        // Return function that has access to timeout closure variable
+        return function() {
+          // Keep track of these so can be used within setTimeout
+          var self = this, args = arguments;
+
+          var callNow = immediate && !timeout;
+          // Clear the previous timeout
+          clearTimeout(timeout);
+          // Set the new timeout
+          timeout = setTimeout(later, wait);
+          if (callNow) func.apply(self, args);
+
+          function later() {
+            // Reset timeout
+            timeout = null;
+            // If hasn't already been called immediately, call the function now
+            // If has been called immediately, but begAndEnd flag is on, call again anyway so the end query is captured
+            if ((immediate && begAndEnd) || !immediate) func.apply(self, args);
+          }
+        };
+      }
+
+      function queryGooglePlaces(keywords) {
+        googlePlaces.query(keywords)
+                    .then(function(places) {
+                      // Alternate properly based on 2-panel view -- doing it here is faster than using ng-if within ng-repeat
+                        // Bitwise check for odd #s is faster than modulo
+                      console.log(places.length, 'places found!');
+                      places.forEach(function(element) { element.size = randomSizer(); });
+                      self.oddPlaces = places.filter(function(element, i) { return (i & 1); });
+                      self.evenPlaces = places.filter(function(element, i) { return !(i & 1); });
+                    });
+      }
 
       // Use closures to avoid repetitive access to len property
       var choices = ['sm', 'md', 'lg'];
@@ -20,53 +58,6 @@ angular.module('explore')
       var randomSizer = function() {
         return choices[Math.floor(Math.random() * numChoices)];
       };
-
-      googlePlaces.query()
-                  .then(function(places) {
-                    places = [
-                      {
-                        title: 'Title 1',
-                        description: 'Description here...',
-                        imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
-                      },
-                      {
-                        title: 'Title 2',
-                        description: 'Description here...',
-                        imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
-                      },
-                      {
-                        title: 'Title 2',
-                        description: 'Description here...',
-                        imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
-                      },
-                      {
-                        title: 'Title 2',
-                        description: 'Description here...',
-                        imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
-                      },
-                      {
-                        title: 'Title 2',
-                        description: 'Description here...',
-                        imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
-                      },
-                      {
-                        title: 'Title 2',
-                        description: 'Description here...',
-                        imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
-                      },
-                      {
-                        title: 'Title 2',
-                        description: 'Description here...',
-                        imagePath: 'https://material.angularjs.org/latest/img/washedout.png'
-                      },
-                    ]
-
-                    // Alternate properly based on 2-panel view -- doing it here is faster than using ng-if within ng-repeat
-                      // Bitwise check for odd #s is faster than modulo
-                    places.forEach(function(element) { element.size = randomSizer(); });
-                    self.oddPlaces = places.filter(function(element, i) { return (i & 1); });
-                    self.evenPlaces = places.filter(function(element, i) { return !(i & 1); });
-                  });
 
     }],
   });

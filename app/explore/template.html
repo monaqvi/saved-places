@@ -1,5 +1,14 @@
 <div>
   <div layout="column" class="md-padding" map-lazy-load="{{$ctrl.googleMapsUrl}}" map-lazy-load-params="{{$ctrl.googleMapsUrl}}">
+    <form name="placesSearch" novalidate>
+      <md-input-container class="md-block">
+        <label>Keywords</label>
+        <input required name="keywords" ng-model="$ctrl.keywords" ng-change="$ctrl.debouncedQueryGooglePlaces($ctrl.keywords)">
+        <div ng-messages="placesSearch.keywords.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+    </form>
     <ng-map center="{{$ctrl.center}}" zoom="13"></ng-map>
   </div>
   <md-content class="md-padding" layout-xs="column" layout="row">

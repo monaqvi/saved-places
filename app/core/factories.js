@@ -50,22 +50,26 @@ angular.module('savedPlaces')
       query: query,
     }
 
-    function query() {
+    function query(keywords) {
+      console.log('Searching for places nearby with keywords:', keywords);
       return NgMap
         .getMap()
         .then(function(map) {
+          console.log('Grabbed map:', map);
           var deferred = $q.defer();
           var infoWindow = new google.maps.InfoWindow(),
               service = new google.maps.places.PlacesService(map),
               places = [];
 
-          map.addListener('idle', performSearch);
+          // map.addListener('idle', performSearch);
+          performSearch();
 
           function performSearch() {
             var request = {
               bounds: map.getBounds(),
-              keyword: 'white',
+              keyword: keywords,
             };
+            console.log('searching...');
             service.radarSearch(request, callback);
           }
 
@@ -75,6 +79,8 @@ angular.module('savedPlaces')
               deferred.reject(status);
               return;
             }
+
+            console.log('got results');
             results.forEach(function(result) {
               addMarker(result);
             });
