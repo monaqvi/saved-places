@@ -46,17 +46,16 @@ angular.module('explore')
                       // Alternate properly based on 2-panel view -- doing it here is faster than using ng-if within ng-repeat
                         // Bitwise check for odd #s is faster than modulo
                       console.log(places.length, 'places found!');
-                      places.forEach(function(element) { element.size = randomSizer(); });
-                      self.oddPlaces = places.filter(function(element, i) { return (i & 1); });
+                      places.forEach(function(element, index) { element.size = randomSizer(index); });
+                      self.oddPlaces = places.filter(function(element, i) { return !!(i & 1); });
                       self.evenPlaces = places.filter(function(element, i) { return !(i & 1); });
                     });
       }
 
-      // Use closures to avoid repetitive access to len property
-      var choices = ['sm', 'md', 'lg'];
+      var choices = ['md', 'sm', 'lg'];
       var numChoices = choices.length;
-      var randomSizer = function() {
-        return choices[Math.floor(Math.random() * numChoices)];
+      var randomSizer = function(i) {
+        return choices[i % numChoices];
       };
 
     }],
