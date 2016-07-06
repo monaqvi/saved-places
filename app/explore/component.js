@@ -2,8 +2,8 @@
 angular.module('explore')
   .component('nearbyPlaces', {
     templateUrl: './app/explore/template.html',
-    controller: ['$routeParams', '$timeout', 'geoLocator', 'googleMaps', 'googlePlaces',
-    function ExploreCtrl($routeParams, $timeout, geoLocator, googleMaps, googlePlaces) {
+    controller: ['$routeParams', '$timeout', '$mdDialog', 'geoLocator', 'googleMaps', 'googlePlaces',
+    function ExploreCtrl($routeParams, $timeout, $mdDialog, geoLocator, googleMaps, googlePlaces) {
       var self = this;
 
       self.googleMapsUrl = googleMaps;
@@ -45,18 +45,33 @@ angular.module('explore')
                     .then(function(places) {
                       // Alternate properly based on 2-panel view -- doing it here is faster than using ng-if within ng-repeat
                         // Bitwise check for odd #s is faster than modulo
-                      console.log(places.length, 'places found!');
+                      console.log(places.length + ' places found!');
                       places.forEach(function(element, index) { element.size = randomSizer(index); });
                       self.oddPlaces = places.filter(function(element, i) { return !!(i & 1); });
                       self.evenPlaces = places.filter(function(element, i) { return !(i & 1); });
-                    });
+                    })
+                    .catch(alertNoneFound);
+      }
+
+      function alertNoneFound() {
+        $mdDialog.show(
+          $mdDialog.alert()
+            .clickOutsideToClose(true)
+            .title('No results found!')
+            .textContent('Please try a different keyword or change the map location / zoom')
+            .ariaLabel('No results')
+            .ok('Got it!')
+            // Can specify either sting with query selector
+            .openFrom('#alertFrom')
+            // or an element
+            .closeTo(angular.element(document.querySelector('#alertFrom')))
+        );
       }
 
       var choices = ['md', 'sm', 'lg'];
       var numChoices = choices.length;
-      var randomSizer = function(i) {
+      function randomSizer(i) {
         return choices[i % numChoices];
-      };
-
+      }
     }],
   });
