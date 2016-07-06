@@ -122,7 +122,7 @@ angular.module('savedPlaces')
         });
       }
   }])
-  .factory('debounce', [function() {
+  .factory('debounce', ['$timeout', function($timeout) {
     return function debounce(func, wait, immediate, begAndEnd) {
       var timeout;
       // Return function that has access to timeout closure variable
@@ -132,9 +132,9 @@ angular.module('savedPlaces')
 
         var callNow = immediate && !timeout;
         // Clear the previous timeout
-        clearTimeout(timeout);
+        $timeout.cancel(timeout);;
         // Set the new timeout
-        timeout = setTimeout(later, wait);
+        timeout = $timeout(later, wait);
         if (callNow) func.apply(self, args);
 
         function later() {
