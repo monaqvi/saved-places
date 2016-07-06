@@ -1,11 +1,11 @@
 angular.module('explore')
   .factory('alertNoneFound', ['$mdDialog', function($mdDialog) {
-    return function alertNoneFound() {
+    return function alertNoneFound(keywords) {
       $mdDialog.show(
         $mdDialog.alert()
           .clickOutsideToClose(true)
           .title('No results found!')
-          .textContent('Please try a different keyword or change the map location / zoom')
+          .textContent('Nothing found using: \'' + keywords + '\'. Please try a different keyword or change the map location / zoom.')
           .ariaLabel('No results')
           .ok('Got it!')
           // Can specify either sting with query selector

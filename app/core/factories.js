@@ -45,12 +45,16 @@ angular.module('savedPlaces')
       return ans ? ans : askForAPIKey($window);
     }
   }])
-  .factory('googlePlaces', ['$window', 'NgMap', '$q', function ($window, NgMap, $q) {
+  .factory('googlePlaces', ['$window', 'NgMap', '$q', 'debounce', function ($window, NgMap, $q, debounce) {
     return {
       query: query,
     }
 
     function query(keywords) {
+      if (!keywords) {
+        console.error('Keywords cannot be blank');
+        return;
+      }
       console.log('Searching for places nearby with keywords:', keywords);
       return NgMap
         .getMap()
@@ -58,11 +62,13 @@ angular.module('savedPlaces')
           console.log('Grabbed map:', map);
           var deferred = $q.defer();
           var infoWindow = new google.maps.InfoWindow(),
-              service = new google.maps.places.PlacesService(map),
-              places = [];
+              service = new google.maps.places.PlacesService(map);
 
-          // map.addListener('idle', performSearch);
-          performSearch();
+          var eagerDebounceSearch = debounce(performSearch, 5000);
+          var lazyDebounceSearch = debounce(performSearch, 5000);
+          eagerDebounceSearch();
+
+          // map.addListener('bounds_changed', lazyDebounceSearch);
 
           function performSearch() {
             var request = {
@@ -80,12 +86,12 @@ angular.module('savedPlaces')
               return;
             }
 
-            console.log('got results');
+            console.log('finished searching');
             results.forEach(function(result) {
               addMarker(result);
             });
 
-            deferred.resolve(places.concat(results));
+            deferred.resolve(results);
           }
 
           function addMarker(place) {
