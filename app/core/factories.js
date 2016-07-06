@@ -45,12 +45,12 @@ angular.module('savedPlaces')
       return ans ? ans : askForAPIKey($window);
     }
   }])
-  .factory('googlePlaces', ['$window', 'NgMap', '$q', 'debounce', function ($window, NgMap, $q, debounce) {
+  .factory('googlePlaces', ['$window', 'NgMap', 'debounce', function ($window, NgMap, debounce) {
     return {
       query: query,
     }
 
-    function query(keywords) {
+    function query(keywords, cb) {
       if (!keywords) {
         console.error('Keywords cannot be blank');
         return;
@@ -60,38 +60,41 @@ angular.module('savedPlaces')
         .getMap()
         .then(function(map) {
           console.log('Grabbed map:', map);
-          var deferred = $q.defer();
           var infoWindow = new google.maps.InfoWindow(),
               service = new google.maps.places.PlacesService(map);
 
-          var eagerDebounceSearch = debounce(performSearch, 5000);
-          var lazyDebounceSearch = debounce(performSearch, 5000);
+          // Increase delay for eager loading
+          var eagerDebounceSearch = debounce(performSearch, 5000, true);
+          var lazyDebounceSearch = debounce(performSearch, 1000);
+
+          // Query call was already debounced so can invoke immediately here
           eagerDebounceSearch();
 
-          // map.addListener('bounds_changed', lazyDebounceSearch);
+          map.addListener('bounds_changed', lazyDebounceSearch);
 
+          function logChange() {
+            console.log('Map changed');
+          }
           function performSearch() {
             var request = {
               bounds: map.getBounds(),
               keyword: keywords,
             };
-            console.log('searching...');
+            console.log('searching with keywords:', keywords);
             service.radarSearch(request, callback);
           }
 
           function callback(results, status) {
             if (status !== google.maps.places.PlacesServiceStatus.OK) {
               console.error(status);
-              deferred.reject(status);
-              return;
+              cb(status, keywords);
+            } else {
+              console.log('finished searching');
+              results.forEach(function(result) {
+                addMarker(result);
+              });
+              cb(null, results);
             }
-
-            console.log('finished searching');
-            results.forEach(function(result) {
-              addMarker(result);
-            });
-
-            deferred.resolve(results);
           }
 
           function addMarker(place) {
@@ -116,10 +119,6 @@ angular.module('savedPlaces')
               });
             });
           }
-
-          // Return asynchronously
-          return deferred.promise;
-
         });
       }
   }])
