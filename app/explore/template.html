@@ -13,7 +13,7 @@
   </div>
   <md-content class="md-padding" layout-xs="column" layout="row">
     <div flex-xs flex-gt-xs="50" layout="column">
-      <md-card class="fade" ng-repeat="place in $ctrl.oddPlaces track by $index">
+      <md-card class="fade" ng-repeat="place in $ctrl.evenPlaces track by $index">
         <md-card-title>
           <md-card-title-text>
             <span class="md-headline">Card with image</span>
@@ -30,7 +30,7 @@
       </md-card>
     </div>
     <div flex-xs flex-gt-xs="50" layout="column">
-      <md-card class="fade" ng-repeat="place in $ctrl.evenPlaces track by $index">
+      <md-card class="fade" ng-repeat="place in $ctrl.oddPlaces track by $index">
         <md-card-title>
           <md-card-title-text>
             <span class="md-headline">Card with image</span>
