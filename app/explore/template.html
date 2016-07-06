@@ -12,7 +12,7 @@
     <ng-map center="{{$ctrl.center}}" zoom="13"></ng-map>
   </div>
   <md-content class="md-padding" layout-xs="column" layout="row">
-    <div flex-xs flex-gt-xs="50" layout="column">
+    <div flex-xs flex-gt-sm="50" layout="column">
       <md-card class="fade" ng-repeat="place in $ctrl.evenPlaces track by $index">
         <md-card-title>
           <md-card-title-text>
@@ -29,7 +29,7 @@
         </md-card-actions>
       </md-card>
     </div>
-    <div flex-xs flex-gt-xs="50" layout="column">
+    <div flex-xs flex-gt-sm="50" layout="column">
       <md-card class="fade" ng-repeat="place in $ctrl.oddPlaces track by $index">
         <md-card-title>
           <md-card-title-text>
