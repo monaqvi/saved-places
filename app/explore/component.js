@@ -2,8 +2,8 @@
 angular.module('explore')
   .component('nearbyPlaces', {
     templateUrl: './app/explore/template.html',
-    controller: ['$routeParams', '$timeout', '$mdDialog', 'geoLocator', 'googleMaps', 'googlePlaces', 'debounce',
-    function ExploreCtrl($routeParams, $timeout, $mdDialog, geoLocator, googleMaps, googlePlaces, debounce) {
+    controller: ['$routeParams', '$timeout', 'geoLocator', 'googleMaps', 'googlePlaces', 'debounce', 'alertNoneFound', 'randomSizer',
+    function ExploreCtrl($routeParams, $timeout, geoLocator, googleMaps, googlePlaces, debounce, alertNoneFound, randomSizer) {
       var self = this;
 
       self.googleMapsUrl = googleMaps;
@@ -29,25 +29,5 @@ angular.module('explore')
                     .catch(alertNoneFound);
       }
 
-      function alertNoneFound() {
-        $mdDialog.show(
-          $mdDialog.alert()
-            .clickOutsideToClose(true)
-            .title('No results found!')
-            .textContent('Please try a different keyword or change the map location / zoom')
-            .ariaLabel('No results')
-            .ok('Got it!')
-            // Can specify either sting with query selector
-            .openFrom('#alertFrom')
-            // or an element
-            .closeTo(angular.element(document.querySelector('#alertFrom')))
-        );
-      }
-
-      var choices = ['md', 'sm', 'lg'];
-      var numChoices = choices.length;
-      function randomSizer(i) {
-        return choices[i % numChoices];
-      }
     }],
   });
