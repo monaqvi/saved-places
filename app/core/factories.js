@@ -51,10 +51,10 @@ angular.module('savedPlaces')
     }
 
     function query(keywords, cb) {
-      if (!keywords) {
-        console.error('Keywords cannot be blank');
-        return;
-      }
+      // if (!keywords) {
+      //   console.error('Keywords cannot be blank');
+      //   return;
+      // }
       console.log('Searching for places nearby with keywords:', keywords);
       return NgMap
         .getMap()
@@ -81,7 +81,7 @@ angular.module('savedPlaces')
               keyword: keywords,
             };
             console.log('searching with keywords:', keywords);
-            service.radarSearch(request, callback);
+            service.nearbySearch(request, callback);
           }
 
           function callback(results, status) {
