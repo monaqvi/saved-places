@@ -90,10 +90,17 @@ angular.module('savedPlaces')
               cb(status, keywords);
             } else {
               console.log('finished searching');
+              var filtered = [];
               results.forEach(function(result) {
+                // Filter out unwanted types
+                if (result.types.indexOf('locality') !== -1) return;
+                if (result.types.indexOf('neighborhood') !== -1) return;
+
+                // Add places that make the cut
                 addMarker(result);
+                filtered.push(result);
               });
-              cb(null, results);
+              cb(null, filtered);
             }
           }
 

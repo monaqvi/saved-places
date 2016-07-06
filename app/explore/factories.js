@@ -21,4 +21,25 @@ angular.module('explore')
     return function randomSizer(i) {
       return choices[i % numChoices];
     }
-  });
+  })
+  .factory('resultsRefiner', ['randomSizer', function(randomSizer) {
+    return function (array) {
+      var even = [], 
+          odd = [];
+
+      array.forEach(function(e, i) {
+        // Map properties
+        e.name = e.name;
+        e.categories = e.types || [];
+        e.address = e.vicinity || '';
+        // e.photo = e.photos[0].getUrl({maxWidth: 640});
+        e.size = randomSizer(i); 
+
+        // Assign to even or odd accordingly
+        // Bitwise check for odd #s is faster than modulo
+        (i & 1) ? odd.push(e) : even.push(e);
+      });
+
+      return { even: even, odd: odd };
+    }
+  }]);
