@@ -12,37 +12,39 @@
     <ng-map center="{{$ctrl.center}}" zoom="13"></ng-map>
   </div>
   <md-content class="md-padding" layout-xs="column" layout="row">
-    <div flex-xs flex-gt-sm="50" layout="column">
-      <md-card class="fade" ng-repeat="place in $ctrl.evenPlaces track by $index">
+    <div flex-xs flex-gt-xs="50" layout="column">
+      <md-card class="fade" ng-repeat="place in $ctrl.evenPlaces">
+        <img ng-src="{{place.photo}}" class="md-card-image" alt="No Picture">
         <md-card-title>
           <md-card-title-text>
             <span class="md-headline">{{place.name}}</span>
-            <span class="md-subhead">{{place.address}}</span>
           </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-{{place.size}} card-media"></div>
-          </md-card-title-media>
         </md-card-title>
+        <md-card-content>
+          <p>{{place.address}}</p>
+        </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button>Action 1</md-button>
-          <md-button>Action 2</md-button>
+          <md-button class="md-icon-button md-36" aria-label="Add Place" ng-disabled="false">
+            <md-icon class="material-icons md-36">&#xE147;</md-icon>
+          </md-button>
         </md-card-actions>
       </md-card>
     </div>
-    <div flex-xs flex-gt-sm="50" layout="column">
-      <md-card class="fade" ng-repeat="place in $ctrl.oddPlaces track by $index">
+    <div flex-xs flex-gt-xs="50" layout="column">
+      <md-card class="fade" ng-repeat="place in $ctrl.oddPlaces">
+        <img ng-src="{{place.photo}}" class="md-card-image" alt="No Picture">
         <md-card-title>
           <md-card-title-text>
             <span class="md-headline">{{place.name}}</span>
-            <span class="md-subhead">{{place.address}}</span>
           </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-{{place.size}} card-media"></div>
-          </md-card-title-media>
         </md-card-title>
+        <md-card-content>
+          <p>{{place.address}}</p>
+        </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button>Action 1</md-button>
-          <md-button>Action 2</md-button>
+          <md-button class="md-icon-button md-36" aria-label="Add Place" ng-disabled="false">
+            <md-icon class="material-icons md-36">&#xE147;</md-icon>
+          </md-button>
         </md-card-actions>
       </md-card>
     </div>

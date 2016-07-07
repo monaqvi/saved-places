@@ -95,6 +95,7 @@ angular.module('savedPlaces')
                 // Filter out unwanted types
                 if (result.types.indexOf('locality') !== -1) return;
                 if (result.types.indexOf('neighborhood') !== -1) return;
+                if (!result.photos || result.photos.length === 0) return;
 
                 // Add places that make the cut
                 addMarker(result);

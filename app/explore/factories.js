@@ -32,7 +32,7 @@ angular.module('explore')
         e.name = e.name;
         e.categories = e.types || [];
         e.address = e.vicinity || '';
-        e.photo = (e.photos) ? (e.photos[0].getUrl({maxWidth: 640}) || ''): '';
+        e.photo = e.photos[0].getUrl({maxWidth: 640});
         e.size = randomSizer(i); 
 
         // Assign to even or odd accordingly
