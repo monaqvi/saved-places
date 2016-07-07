@@ -1,6 +1,5 @@
 angular.module('categories')
-  .controller('CategoriesCtrl', function($scope, $mdMedia, mainMenu) {
-    $scope.addingNewCategory = false;
+  .controller('CategoriesCtrl', function($scope, $mdMedia, mainMenu, newCategoryInput) {
     $scope.categories = [
       {
         label: 'Restaurants',
@@ -17,16 +16,12 @@ angular.module('categories')
     ];
 
     $scope.mainMenu = mainMenu;
+    $scope.newCategoryInput = newCategoryInput;
     
     $scope.toggleMenu = function() {
       mainMenu.toggle();
-      if ($mainMenu.isOpen) $scope.resetNewCategory();
     }
-
-    $scope.toggleNewCategoryInput = function() {
-      $scope.addingNewCategory = !$scope.addingNewCategory;
-    }
-
+    
     $scope.createNewCategory = function() {
       $scope.categories.push({
         label: $scope.categoryName,
@@ -36,7 +31,7 @@ angular.module('categories')
     }
 
     $scope.resetNewCategory = function() {
-      $scope.addingNewCategory = false;
+      newCategoryInput.turnOff();
       $scope.categoryName = '';
     }
   });

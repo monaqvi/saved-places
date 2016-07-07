@@ -48,10 +48,10 @@
 
       <div flex layout="row" ng-controller="CategoriesCtrl">
         <md-sidenav md-is-locked-open="mainMenu.isOpen" class="md-whiteframe-z2" md-component-id="left" md-disable-backdrop>
-        <div>
+        <div ng-show="mainMenu.isOpen">
           <md-button class="md-raised md-accent full-width" ng-href="/#/explore">Explore</md-button>
-          <md-button class="md-raised md-primary full-width" ng-click="toggleNewCategoryInput()" ng-href="">Add Category</md-button>
-            <form ng-if="addingNewCategory" name="categoryForm" novalidate ng-submit="categoryForm.$valid && createNewCategory()">
+          <md-button class="md-raised md-primary full-width" ng-click="newCategoryInput.toggle()" ng-href="">Add Category</md-button>
+            <form ng-if="newCategoryInput.isActive" name="categoryForm" novalidate ng-submit="categoryForm.$valid && createNewCategory()">
               <md-input-container class="md-block">
                 <label>Category name</label>
                 <input required name="categoryName" ng-model="$parent.categoryName" required category-validater esc-key autofocus>
@@ -110,7 +110,7 @@
   <script src="./app/api/keys.js"></script>
   <script src="./app/core/factories.js"></script>
   <script src="./app/explore/factories.js"></script>
-  <script src="./app/explore/factories.js"></script>
+  <script src="./app/categories/factories.js"></script>
 
   <!-- Components -->
   <script src="./app/explore/component.js"></script>
