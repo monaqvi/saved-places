@@ -49,8 +49,8 @@
       <div flex layout="row" ng-controller="CategoriesCtrl">
         <md-sidenav md-is-locked-open="mainMenu.isOpen" class="md-whiteframe-z2" md-component-id="left" md-disable-backdrop>
         <div ng-show="mainMenu.isOpen">
-          <md-button class="md-raised md-accent full-width" ng-href="/#/explore">Explore</md-button>
-          <md-button class="md-raised md-primary full-width" ng-click="newCategoryInput.toggle()" ng-href="">Add Category</md-button>
+          <md-button class="md-raised md-accent left-half" ng-href="/#/explore">Explore</md-button>
+          <md-button class="md-raised md-primary right-half" ng-click="newCategoryInput.toggle()" ng-href="">Add Category</md-button>
             <form ng-if="newCategoryInput.isActive" name="categoryForm" novalidate ng-submit="categoryForm.$valid && createNewCategory()">
               <md-input-container class="md-block">
                 <label>Category name</label>

@@ -47,8 +47,14 @@ md-sidenav  md-list {
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
 
 /* Sidebar buttons */
-.md-button.full-width {
-  width: 140px;
+md-sidenav .md-button {
+  width: 40%;
+  margin: 10px 0 10px 6%;
+  padding: 0;
+}
+
+md-sidenav .md-button.right-half {
+  margin-right: 5%;
 }
 
 md-input-container {
