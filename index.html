@@ -47,7 +47,7 @@
       </md-toolbar>
 
       <div flex layout="row" ng-controller="CategoriesCtrl">
-        <md-sidenav md-is-locked-open="mainMenu.isOpen" class="md-whiteframe-z2" md-component-id="left" md-disable-backdrop>
+        <md-sidenav md-is-locked-open="mainMenu.isOpen" class="md-whiteframe-z2" md-component-id="left">
         <div ng-show="mainMenu.isOpen">
           <md-button class="md-raised md-accent left-half" ng-href="/#/{{getActiveView()}}">{{getFirstButtonLabel()}}</md-button>
           <md-button class="md-raised md-primary right-half" ng-click="newCategoryInput.toggle()" ng-href="">Add Category</md-button>
@@ -111,6 +111,7 @@
   <script src="./app/core/factories.js"></script>
   <script src="./app/explore/factories.js"></script>
   <script src="./app/categories/factories.js"></script>
+  <script src="./app/newPlace/factories.js"></script>
 
   <!-- Components -->
   <script src="./app/explore/component.js"></script>

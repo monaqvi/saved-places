@@ -1,7 +1,10 @@
 angular.module('savedPlaces')
-  .controller('CoreCtrl', ['$scope', '$mdMedia', 'mainMenu', 'newCategoryInput', function($scope, $mdMedia, mainMenu, newCategoryInput) {
-    $scope.toggleMenu = function() {
-      mainMenu.toggle();
-      newCategoryInput.turnOff();
-    }
+  .controller('CoreCtrl', ['$scope', 'mainMenu', 'newCategoryInput', 'newPlacePrompt',
+    function($scope, mainMenu, newCategoryInput, newPlacePrompt) {
+      $scope.toggleMenu = function() {
+        mainMenu.toggle();
+        newCategoryInput.turnOff();
+      }
+
+      $scope.newPlacePrompt = newPlacePrompt.bind(null, $scope);
   }]);

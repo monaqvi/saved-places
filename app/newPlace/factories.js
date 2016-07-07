@@ -1,10 +1,10 @@
 angular.module('newPlace')
-  .factory('newPlacePrompt', ['$mdDialog', function($mdDialog) {
-    return function(ev) {
+  .factory('newPlacePrompt', ['$mdDialog', '$mdMedia', function($mdDialog, $mdMedia) {
+    return function($scope, ev) {
       var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
       $mdDialog.show({
-        controller: DialogController,
-        templateUrl: 'dialog1.tmpl.html',
+        controller: 'NewPlaceCtrl',
+        templateUrl: './app/newPlace/newPlacePrompt.html',
         parent: angular.element(document.body),
         targetEvent: ev,
         clickOutsideToClose:true,
