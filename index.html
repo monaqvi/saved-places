@@ -40,7 +40,7 @@
           </md-button>
           <h1>Saved Places</h1>
           <span flex></span>
-          <md-button class="md-icon-button md-36" aria-label="Add Place" ng-disabled="false">
+          <md-button class="md-icon-button md-36" aria-label="Add Place" ng-disabled="false" ng-click="showAdvanced($event)">
             <md-icon class="material-icons md-36">&#xE147;</md-icon>
           </md-button>
         </div>
@@ -95,22 +95,25 @@
   <script src="./app/categories/module.js"></script>
   <script src="./app/content/module.js"></script>
   <script src="./app/explore/module.js"></script>
+  <script src="./app/newPlace/module.js"></script>
 
   <!-- Routes -->
   <script src="./app/core/config.js"></script>
+
+  <!-- Controllers -->
+  <script src="./app/categories/controller.js"></script>
+  <script src="./app/content/controller.js"></script>
+  <script src="./app/newPlace/controller.js"></script>
 
   <!-- Factories & Services -->
   <script src="./app/api/keys.example.js"></script>
   <script src="./app/api/keys.js"></script>
   <script src="./app/core/factories.js"></script>
   <script src="./app/explore/factories.js"></script>
+  <script src="./app/explore/factories.js"></script>
 
   <!-- Components -->
   <script src="./app/explore/component.js"></script>
-
-  <!-- Controllers -->
-  <script src="./app/categories/controller.js"></script>
-  <script src="./app/content/controller.js"></script>
 
   <!-- Directives -->
   <script src="./app/categories/directives.js"></script>

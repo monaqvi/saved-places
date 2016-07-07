@@ -7,6 +7,7 @@ angular
     'categories',
     'content',
     'explore',
+    'newPlace',
   ])
   .run(function($log){
     $log.debug("running");
