@@ -1,4 +1,17 @@
 angular.module('savedPlaces')
+  .factory('mainMenu', ['$mdSidenav', function($mdSidenav) {
+    var menu = {
+      isOpen: false,
+    }
+
+    menu.toggle = function() {
+      console.log('toggled');
+      // $mdSidenav('left').toggle();
+      menu.isOpen = !menu.isOpen;
+    };
+
+    return menu;
+  }])
   .factory('geoLocator', ['$q', '$window', function ($q, $window) {
     return {
       getCurrentPosition: function () {

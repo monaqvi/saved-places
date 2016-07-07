@@ -1,6 +1,5 @@
 angular.module('categories')
-  .controller('CategoriesCtrl', function($scope, $mdMedia) {
-    $scope.menuOpen = $mdMedia('gt-md');
+  .controller('CategoriesCtrl', function($scope, $mdMedia, mainMenu) {
     $scope.addingNewCategory = false;
     $scope.categories = [
       {
@@ -17,9 +16,11 @@ angular.module('categories')
       },
     ];
 
+    $scope.mainMenu = mainMenu;
+    
     $scope.toggleMenu = function() {
-      $scope.menuOpen = !$scope.menuOpen;
-      if ($scope.menuOpen) $scope.resetNewCategory();
+      mainMenu.toggle();
+      if ($mainMenu.isOpen) $scope.resetNewCategory();
     }
 
     $scope.toggleNewCategoryInput = function() {
