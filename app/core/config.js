@@ -6,7 +6,8 @@ angular.module('savedPlaces')
       when('/places', {
         templateUrl: './app/content/template.html',
         controller: 'ContentCtrl',
-        controllerAs: 'content'
+        controllerAs: 'content',
+        activeView: 'places'
       }).
       // when('/places/:placeId', {
       //   templateUrl: 'partials/phone-detail.html',
@@ -14,8 +15,9 @@ angular.module('savedPlaces')
       // }).
       when('/explore', {
         template: '<nearby-places></nearby-places>',
+        activeView: 'explore',
       }).
       otherwise({
-        redirectTo: '/places'
+        redirectTo: '/places',
       });
   }]);
