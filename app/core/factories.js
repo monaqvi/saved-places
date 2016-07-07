@@ -6,8 +6,8 @@ angular.module('savedPlaces')
 
     menu.toggle = function() {
       console.log('toggled');
-      // $mdSidenav('left').toggle();
       menu.isOpen = !menu.isOpen;
+      // $mdSidenav('left').toggle();
     };
 
     return menu;
