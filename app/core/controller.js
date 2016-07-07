@@ -1,5 +1,5 @@
-angular.module('categories')
-  .controller('CategoriesCtrl', function($scope, $mdMedia) {
+angular.module('savedPlaces')
+  .controller('CoreCtrl', ['$scope', '$mdMedia', function($scope, $mdMedia) {
     $scope.menuOpen = $mdMedia('gt-md');
     $scope.addingNewCategory = false;
     $scope.categories = [
@@ -38,4 +38,4 @@ angular.module('categories')
       $scope.addingNewCategory = false;
       $scope.categoryName = '';
     }
-  });
+  }]);

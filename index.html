@@ -31,7 +31,7 @@
     <!-- https://google.github.io/material-design-icons/ for more info -->
 
   </head>
-    <body ng-app="savedPlaces" layout="column" ng-controller="CategoriesCtrl" ng-cloak>
+    <body ng-app="savedPlaces" layout="column" ng-controller="CoreCtrl" ng-cloak>
       
       <md-toolbar class="md-hue-2">
         <div class="md-toolbar-tools">
@@ -40,13 +40,13 @@
           </md-button>
           <h1>Saved Places</h1>
           <span flex></span>
-          <md-button class="md-icon-button md-36" aria-label="Add Place" ng-disabled="false" ng-click="showAdvanced($event)">
+          <md-button class="md-icon-button md-36" aria-label="Add Place" ng-disabled="false" ng-click="newPlacePrompt($event)">
             <md-icon class="material-icons md-36">&#xE147;</md-icon>
           </md-button>
         </div>
       </md-toolbar>
 
-      <div flex layout="row">
+      <div flex layout="row" ng-controller="CategoriesCtrl">
         <md-sidenav md-is-locked-open="menuOpen" class="md-whiteframe-z2" md-component-id="left" md-disable-backdrop>
         <div ng-show="menuOpen">
           <md-button class="md-raised md-accent full-width" ng-href="/#/explore">Explore</md-button>
@@ -101,6 +101,7 @@
   <script src="./app/core/config.js"></script>
 
   <!-- Controllers -->
+  <script src="./app/core/controller.js"></script>
   <script src="./app/categories/controller.js"></script>
   <script src="./app/content/controller.js"></script>
   <script src="./app/newPlace/controller.js"></script>
