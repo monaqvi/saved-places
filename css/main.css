@@ -85,3 +85,7 @@ md-input-container {
 .fade.ng-leave.ng-leave-active {
   opacity: 0;
 }
+
+md-dialog {
+  width: 80%;
+}
