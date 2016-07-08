@@ -2,22 +2,27 @@ angular.module('savedPlaces')
   .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');
 
-    $routeProvider.
-      when('/places', {
+    $routeProvider
+      .when('/places', {
         templateUrl: './app/content/template.html',
         controller: 'ContentCtrl',
         controllerAs: 'content',
         activeView: 'places'
-      }).
+      })
+      .when('/newPlace', {
+        templateUrl: './app/newPlace/newPlacePrompt.html',
+        controller: 'NewPlaceCtrl',
+        activeView: 'places'
+      })
       // when('/places/:placeId', {
       //   templateUrl: 'partials/phone-detail.html',
       //   controller: 'PlaceDetailCtrl'
       // }).
-      when('/explore', {
+      .when('/explore', {
         template: '<nearby-places></nearby-places>',
         activeView: 'explore',
-      }).
-      otherwise({
+      })
+      .otherwise({
         redirectTo: '/places',
       });
   }]);

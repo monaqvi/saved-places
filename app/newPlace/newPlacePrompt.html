@@ -1,4 +1,4 @@
-<md-dialog aria-label="Add Place" ng-cloak>
+<!-- <md-dialog aria-label="Add Place" ng-cloak>
   <form>
     <md-toolbar>
       <div class="md-toolbar-tools">
@@ -16,7 +16,7 @@
           <div layout="column" class="md-padding" map-lazy-load="https://maps.google.com/maps/api/js?">
             <form name="autoComplete" novalidate>
               <md-input-container class="md-block">
-                <input type="text" id="Autocomplete" ng-autocomplete name="address" ng-model="address" details="details" options="options" />
+                <input type="text" id="Autocomplete" ng-autocomplete name="address" ng-model="address" options="options" aria-label="Autocomplete"/>
               </md-input-container>
             </form>
             <ng-map center="{{vm.center}}" zoom="13"></ng-map>
@@ -24,7 +24,7 @@
 
           <form name="userForm">
             <md-input-container class="md-block" flex-gt-sm>
-              <label>Name</label>
+              <label>Poop</label>
               <input ng-model="user.firstName">
             </md-input-container>
             <md-input-container class="md-block">
@@ -42,4 +42,52 @@
       </md-button>
     </md-dialog-actions>
   </form>
-</md-dialog>
+</md-dialog> -->
+
+<div>
+<!-- <md-dialog aria-label="Add Place" ng-cloak> -->
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Save A Place</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon class="material-icons" aria-label="Close dialog">&#xE888;</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <md-content layout-padding>
+
+          <div layout="column" class="md-padding" map-lazy-load="https://maps.google.com/maps/api/js?">
+            <form name="autoComplete" novalidate>
+              <md-input-container class="md-block">
+                <input required type="text" id="Autocomplete" ng-autocomplete name="address" ng-model="address" details="details" options="options" aria-label="Autocomplete"/>
+              </md-input-container>
+            </form>
+            <ng-map center="{{vm.center}}" zoom="13"></ng-map>
+          </div>
+
+          <form name="userForm">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Name</label>
+              <input ng-model="placeName">
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Notes</label>
+              <textarea name="note" ng-model="placeNote" md-maxlength="200" rows="10" md-select-on-focus></textarea>
+            </md-input-container>
+          </form>
+        <md-content layout-padding>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="answer('useful')">
+        Add Place
+      </md-button>
+    </md-dialog-actions>
+  </form>
+<!-- </md-dialog> -->
+</div>
