@@ -70,10 +70,23 @@
           </div>
 
           <form name="userForm">
-            <md-input-container class="md-block" flex-gt-sm>
-              <label>Name</label>
-              <input ng-model="placeName">
-            </md-input-container>
+
+            <div layout-gt-sm="row">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Name</label>
+                <input ng-model="placeName">
+              </md-input-container>
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Category</label>
+                <md-select ng-model="placeCategory">
+                  <md-option ng-repeat="category in categories" value="{{category.label}}">
+                    {{category.label}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+            </div>
+
+
             <md-input-container class="md-block">
               <label>Notes</label>
               <textarea name="note" ng-model="placeNote" md-maxlength="200" rows="10" md-select-on-focus></textarea>
