@@ -31,9 +31,7 @@
     <!-- https://google.github.io/material-design-icons/ for more info -->
 
   </head>
-    <body ng-app="savedPlaces" layout="column" ng-controller="CoreCtrl" ng-cloak>
-      <div map-lazy-load map-lazy-load-params="{{googleMapsUrl}}"></div>
-      
+    <body ng-app="savedPlaces" layout="column" ng-controller="CoreCtrl" ng-cloak map-lazy-load map-lazy-load-params="{{googleMapsUrl}}">      
       <md-toolbar class="md-hue-2">
         <div class="md-toolbar-tools">
           <md-button class="md-icon-button" aria-label="Categories" ng-click="toggleMenu()">
