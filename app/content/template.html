@@ -1,6 +1,6 @@
 <div>
   <md-content class="md-padding" layout-xs="column" layout="row">
-    <div flex-xs flex-gt-xs="33" layout="column" ng-repeat="place in content.places track by $index">
+    <div flex-xs flex-gt-xs="33" layout="column" ng-repeat="place in content.places | active track by $index">
       <md-card>
         <img ng-src="{{place.imagePath}}" class="md-card-image" alt="Picture">
         <md-card-title>

@@ -14,4 +14,25 @@ angular.module('categories')
     };
 
     return newCategoryInput;
+  }])
+  .factory('activeCategories', [function() {
+    var activeCategories = {
+      All:true,
+
+      __add: function(category) {
+        this[category] = true;
+      },
+
+      __remove: function(category) {
+        this[category] = false;
+      },
+
+      __toggle: function(category) {
+        this[category] = !this[category];
+      },
+
+    };
+
+    return activeCategories;
   }]);
+
