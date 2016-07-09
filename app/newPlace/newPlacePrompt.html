@@ -20,7 +20,9 @@
                 <input required type="text" id="Autocomplete" ng-autocomplete name="address" ng-model="address" details="details" options="options" aria-label="Autocomplete"/>
               </md-input-container>
             </form>
-            <ng-map center="{{vm.center}}" zoom="13"></ng-map>
+            <div class="map-container">
+              <ng-map center="{{center}}" zoom="13"></ng-map>
+            </div>
           </div>
 
           <form name="userForm">
