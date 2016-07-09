@@ -63,6 +63,13 @@ angular.module('newPlace')
 
                 scope.details = result;
 
+                // Add data to form if nothing there
+                var form = scope.$parent;
+                var reviews = (result.reviews) ? result.reviews.map(function(review) { return review.text; }).join('\n') : '';
+                console.log(reviews);
+                form.placeName = form.placeName || result.name;
+                form.placeNote = form.placeNote || reviews;
+
                 controller.$setViewValue(element.val());
               });
             }

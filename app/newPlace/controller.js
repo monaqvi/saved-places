@@ -7,6 +7,11 @@ angular.module('newPlace')
         country: 'us',
         // bounds: ''
       };
+
+      $scope.placeName = '';
+      $scope.placeNote = '';
+      $scope.placePhoto = '';
+      $scope.reference = '';
     }
   ]);
-
+  
