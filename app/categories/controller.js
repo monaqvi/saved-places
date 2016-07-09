@@ -1,13 +1,7 @@
 angular.module('categories')
-  .controller('CategoriesCtrl', ['$scope', '$location', '$mdMedia', 'mainMenu', 'newCategoryInput', 'activeCategories',
-    function($scope, $location, $mdMedia, mainMenu, newCategoryInput, activeCategories) {
-      $scope.categories = [
-        'All',
-        'Bars',
-        'Coffee Shops',
-        'Restaurants',
-      ]
-
+  .controller('CategoriesCtrl', ['$scope', '$location', '$mdMedia', 'mainMenu', 'newCategoryInput', 'activeCategories', 'categoryList',
+    function($scope, $location, $mdMedia, mainMenu, newCategoryInput, activeCategories, categoryList) {
+      $scope.categories = categoryList;
       $scope.active = activeCategories;
 
       $scope.mainMenu = mainMenu;

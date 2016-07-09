@@ -1,6 +1,9 @@
 angular.module('newPlace')
-  .controller('NewPlaceCtrl', ['$scope',
-    function ($scope) {
+  .controller('NewPlaceCtrl', ['$scope', 'categoryList',
+    function ($scope, categoryList) {
+      // Take out 'All' (first item) as a valid option
+      $scope.categories = categoryList.slice(1);
+
       $scope.address = '';
       $scope.details = '';
       $scope.options = {

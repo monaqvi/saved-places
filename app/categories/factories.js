@@ -34,5 +34,25 @@ angular.module('categories')
     };
 
     return activeCategories;
-  }]);
+  }])
+  .factory('categoryList', [function() {
+    var categoryList = [
+      'All',
+      'Bars',
+      'Coffee Shops',
+      'Restaurants',
+    ];
+
+    categoryList.add = function(category) {
+      this.push(category);
+    };
+
+    categoryList.remove = function(category) {
+      this.forEach(function(e, i) {
+        if (e === category) this.splice(i, 1)
+      });
+    };
+
+    return categoryList;
+  }])
 
