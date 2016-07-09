@@ -2,19 +2,12 @@ angular.module('categories')
   .controller('CategoriesCtrl', ['$scope', '$location', '$mdMedia', 'mainMenu', 'newCategoryInput',
     function($scope, $location, $mdMedia, mainMenu, newCategoryInput) {
       $scope.categories = [
-        {
-          label: 'Restaurants',
-          wanted: false,
-        },
-        {
-          label: 'Bars',
-          wanted: false,
-        },
-        {
-          label: 'Coffee shops',
-          wanted: false,
-        },
-      ];
+        'Bars',
+        'Coffee Shops',
+        'Restaurants',
+      ]
+
+      $scope.active = {};
 
       $scope.mainMenu = mainMenu;
       $scope.newCategoryInput = newCategoryInput;
@@ -24,10 +17,7 @@ angular.module('categories')
       }
       
       $scope.createNewCategory = function() {
-        $scope.categories.push({
-          label: $scope.categoryName,
-          wanted: false,
-        });
+        $scope.categories.push($scope.categoryName);
         $scope.resetNewCategory();
       }
 

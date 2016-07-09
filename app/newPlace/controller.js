@@ -11,7 +11,8 @@ angular.module('newPlace')
       $scope.placeName = '';
       $scope.placeNote = '';
       $scope.placePhoto = '';
-      $scope.reference = '';
+      $scope.placeReference = '';
+      $scope.placeCategory = '';
     }
   ]);
   

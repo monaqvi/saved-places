@@ -66,9 +66,15 @@ angular.module('newPlace')
                 // Add data to form if nothing there
                 var form = scope.$parent;
                 var reviews = (result.reviews) ? result.reviews.map(function(review) { return review.text; }).join('\n') : '';
-                console.log(reviews);
                 form.placeName = form.placeName || result.name;
                 form.placeNote = form.placeNote || reviews;
+
+                // Add data to new place so it can be saved
+                form.reference = result.reference;
+                form.placePhoto = (result.photos && result.photos.length !== 0) ? result.photos[0].getUrl({maxWidth: 640}) : '';
+
+                console.log(form.placePhoto);
+
 
                 controller.$setViewValue(element.val());
               });
