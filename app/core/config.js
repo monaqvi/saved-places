@@ -10,7 +10,7 @@ angular.module('savedPlaces')
         activeView: 'places'
       })
       .when('/newPlace', {
-        templateUrl: './app/newPlace/newPlacePrompt.html',
+        templateUrl: './app/newPlace/newPlaceTest.html',
         controller: 'NewPlaceCtrl',
         activeView: 'places'
       })

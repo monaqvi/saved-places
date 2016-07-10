@@ -90,6 +90,6 @@ md-dialog {
   width: 80%;
 }
 
-div.map-container {
+ng-map, #map_canvas {
   min-height: 200px;
 }

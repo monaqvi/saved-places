@@ -1,14 +1,15 @@
 angular.module('newPlace')
   .factory('newPlacePrompt', ['$mdDialog', '$mdMedia', function($mdDialog, $mdMedia) {
     return function($scope, ev) {
-      var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+      var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+
       $mdDialog.show({
         controller: 'NewPlaceCtrl',
-        templateUrl: './app/newPlace/newPlacePrompt.html',
+        templateUrl: './app/newPlace/newPlaceTest.html',
         parent: angular.element(document.body),
         targetEvent: ev,
         clickOutsideToClose:true,
-        fullscreen: useFullScreen
+        fullscreen: useFullScreen,
       })
       .then(
         function(answer) {
@@ -18,13 +19,5 @@ angular.module('newPlace')
           // On cancel
         }
       );
-
-      $scope.$watch(
-        function() {
-          return $mdMedia('xs') || $mdMedia('sm');
-        }, 
-        function(wantsFullScreen) {
-          $scope.customFullscreen = (wantsFullScreen === true);
-        });
     }
   }])

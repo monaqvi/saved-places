@@ -1,5 +1,5 @@
-<div>
-<!-- <md-dialog aria-label="Add Place" ng-cloak> -->
+<!-- <div> -->
+<md-dialog aria-label="Add Place" ng-cloak>
   <form>
     <md-toolbar>
       <div class="md-toolbar-tools">
@@ -18,10 +18,13 @@
             <form name="autoComplete" novalidate>
               <md-input-container class="md-block">
                 <input required type="text" id="Autocomplete" ng-autocomplete name="address" ng-model="address" details="details" options="options" aria-label="Autocomplete"/>
+                <div ng-messages="autoComplete.address.$error" md-auto-hide="false">
+                  <div ng-message="required">This is required.</div>
+                </div>
               </md-input-container>
             </form>
             <div class="map-container">
-              <ng-map center="{{center}}" zoom="13"></ng-map>
+              <ng-map id="mymap" ng-model="map" center="{{center}}" zoom="13" map-initialized="fixSize()"></ng-map>
             </div>
           </div>
 
@@ -57,5 +60,5 @@
       </md-button>
     </md-dialog-actions>
   </form>
-<!-- </md-dialog> -->
-</div>
+</md-dialog>
+<!-- </div> -->
