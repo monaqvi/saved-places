@@ -2,15 +2,15 @@
   <md-content class="md-padding" layout-xs="column" layout="row">
     <div flex-xs flex-gt-xs="33" layout="column" ng-repeat="place in content.places | active track by $index">
       <md-card>
-        <img ng-src="{{place.imagePath}}" class="md-card-image" alt="Picture">
+        <img ng-src="{{place.photo}}" class="md-card-image" alt="No picture">
         <md-card-title>
           <md-card-title-text>
-            <span class="md-headline">{{place.title}}</span>
+            <span class="md-headline">{{place.name}}</span>
           </md-card-title-text>
         </md-card-title>
         <md-card-content>
           <p>
-            {{place.description}}
+            {{place.note}}
           </p>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
