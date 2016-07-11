@@ -1,6 +1,8 @@
 angular.module('newPlace')
-  .controller('NewPlaceCtrl', ['$scope', '$mdDialog', '$timeout', 'categoryList', 'NgMap', 'savedPlaces',
-    function ($scope, $mdDialog, $timeout, categoryList, NgMap, savedPlaces) {
+  .controller('NewPlaceCtrl', ['$scope', '$mdDialog', '$timeout', 'categoryList', 'NgMap', 'savedPlaces', 'place',
+    function ($scope, $mdDialog, $timeout, categoryList, NgMap, savedPlaces, place) {
+      console.log(place);
+
       $scope.hide = function() {
         $mdDialog.hide();
       };
