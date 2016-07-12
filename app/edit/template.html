@@ -1,0 +1,59 @@
+<!-- <div> -->
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Edit Place</h2>
+        <span flex></span>
+        <md-button ng-click="savePlace()" ng-href="/#/places">
+          Save
+        </md-button>
+        <md-button ng-href="/#/places">
+          Cancel
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-content>
+      <div class="md-content">
+        <md-content layout-padding>
+
+          <div layout="column" class="md-padding">
+            <form name="autoComplete" novalidate>
+              <md-input-container class="md-block">
+                <input required type="text" id="Autocomplete" ng-autocomplete name="address" ng-model="address" details="details" options="options" aria-label="Autocomplete"/>
+                <div ng-messages="autoComplete.address.$error" md-auto-hide="false">
+                  <div ng-message="required">This is required.</div>
+                </div>
+              </md-input-container>
+            </form>
+          </div>
+
+          <form name="userForm">
+          
+            <div layout-gt-sm="row">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Name</label>
+                <input ng-model="placeName">
+              </md-input-container>
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Category</label>
+                <md-select required ng-model="placeCategory">
+                  <md-option ng-repeat="category in categories" value="{{category}}">
+                    {{category}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+            </div>
+
+            <md-input-container class="md-block">
+              <label>Notes</label>
+              <textarea name="note" ng-model="placeNote" md-maxlength="1000" md-select-on-focus></textarea>
+            </md-input-container>
+          </form>
+        <md-content layout-padding>
+      </div>
+    </md-content>
+    <md-actions layout="row">
+      <span flex></span>
+    </md-actions>
+  </form>
+</div>
