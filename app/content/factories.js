@@ -1,15 +1,6 @@
 angular.module('content')
   .factory('savedPlaces', [function() {
-    var savedPlaces = [
-      {
-        name: 'Test',
-        category: 'Bars',
-      },
-      {
-        name: 'Test',
-        category: 'Restaurants',
-      },
-    ];
+    var savedPlaces = [];
 
     savedPlaces.addPlace = function(opts) {
       if (!opts) return;
