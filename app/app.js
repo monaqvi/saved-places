@@ -8,6 +8,7 @@ angular
     'content',
     'explore',
     'newPlace',
+    'edit',
   ])
   .run(function($log){
     $log.debug("running");

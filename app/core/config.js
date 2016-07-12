@@ -14,10 +14,10 @@ angular.module('savedPlaces')
         controller: 'NewPlaceCtrl',
         activeView: 'places'
       })
-      // when('/places/:placeId', {
-      //   templateUrl: 'partials/phone-detail.html',
-      //   controller: 'PlaceDetailCtrl'
-      // }).
+      .when('/places/:placeId', {
+        templateUrl: './app/edit/template.html',
+        controller: 'EditPlaceCtrl'
+      })
       .when('/explore', {
         template: '<nearby-places></nearby-places>',
         activeView: 'explore',
