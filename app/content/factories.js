@@ -1,49 +1,9 @@
 angular.module('content')
   .factory('savedPlaces', [function() {
-    var savedPlaces = [
-      {
-        name: 'Title 1',
-        note: 'Description here...',
-        photo: 'https://material.angularjs.org/latest/img/washedout.png',
-        category: 'Bars',
-        id: '1111',
-      },
-      {
-        name: 'Title 2',
-        note: 'Description here...',
-        photo: 'https://material.angularjs.org/latest/img/washedout.png',
-        category: 'Restaurants',
-        id: '2222',
-      },
-      {
-        name: 'Title 2',
-        note: 'Description here...',
-        photo: 'https://material.angularjs.org/latest/img/washedout.png',
-        category: 'Restaurants',
-        id: '2222',
-      },
-      {
-        name: 'Title 2',
-        note: 'Description here...',
-        photo: 'https://material.angularjs.org/latest/img/washedout.png',
-        category: 'Restaurants',
-        id: '2222',
-      },
-      {
-        name: 'Title 2',
-        note: 'Description here...',
-        photo: 'https://material.angularjs.org/latest/img/washedout.png',
-        category: 'Restaurants',
-        id: '2222',
-      },
-      {
-        name: 'Title 2',
-        note: 'Description here...',
-        photo: 'https://material.angularjs.org/latest/img/washedout.png',
-        category: 'Restaurants',
-        id: '2222',
-      },
-    ];
+    var savedPlaces = {};
+
+    savedPlaces.even = [];
+    savedPlaces.odd = [];
 
     savedPlaces.addPlace = function(opts) {
       if (!opts) return;
@@ -56,7 +16,9 @@ angular.module('content')
         id: opts.id,
       };
 
-      this.push(newPlace);
+      var addTo = this.even.length > this.odd.length ? this.odd : this.even;
+
+      addTo.push(newPlace);
 
     };
 

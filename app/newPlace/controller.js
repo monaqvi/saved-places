@@ -41,6 +41,10 @@ angular.module('newPlace')
 
       // Add data to new place so it can be saved
       $scope.addPlace = function() {
+        if (!$scope.placeName) return;
+        if (!$scope.placeCategory) return;
+        if (!$scope.address) return;
+        
         var newPlaceOpts = {
           name: $scope.placeName,
           note: $scope.placeNote,
