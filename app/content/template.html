@@ -1,7 +1,10 @@
 <div>
   <md-content class="md-padding" layout-xs="column" layout="row">
     <div flex-xs flex-gt-xs="100" layout="column">
-      <md-card ng-repeat="place in content.places | active track by $index">
+      <md-input-container class="md-block">
+        <input type="text" ng-model="searchTerms" aria-label="Search Notes" placeholder="Search Saved Places" />
+      </md-input-container>
+      <md-card ng-repeat="place in content.places | active | filter:searchTerms track by $index">
         <img ng-src="{{place.photo}}" class="md-card-image" alt="No Picture">
         <md-card-title>
           <md-card-title-text>
