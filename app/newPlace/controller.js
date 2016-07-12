@@ -19,15 +19,6 @@ angular.module('newPlace')
       // $scope.map = {};
       // $scope.fixSize = function() { google.maps.event.trigger($scope.map, 'resize'); };
 
-      // NgMap.getMap({id: 'mymap'})
-      //      .then(function(map) {
-      //         $timeout(function() {
-      //           console.log('done');
-      //           google.maps.event.trigger(map, 'resize')
-      //         },
-      //       1000)
-      //      });
-
       $scope.address = place ? place.address : '';
       $scope.placeName = place ? place.name : '';
       $scope.placeNote = (place && place.reviews) ? place.reviews.map(function(review) { return review.text; }).join('\n') : '';
