@@ -47,6 +47,7 @@ angular.module('newPlace')
         
         var newPlaceOpts = {
           name: $scope.placeName,
+          address: $scope.address,
           note: $scope.placeNote,
           category: $scope.placeCategory,
           photo: ($scope.details.photos && $scope.details.photos.length !== 0) ? $scope.details.photos[0].getUrl({maxWidth: 640}) : '',
