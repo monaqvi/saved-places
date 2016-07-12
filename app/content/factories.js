@@ -15,6 +15,34 @@ angular.module('content')
         category: 'Restaurants',
         id: '2222',
       },
+      {
+        name: 'Title 2',
+        note: 'Description here...',
+        photo: 'https://material.angularjs.org/latest/img/washedout.png',
+        category: 'Restaurants',
+        id: '2222',
+      },
+      {
+        name: 'Title 2',
+        note: 'Description here...',
+        photo: 'https://material.angularjs.org/latest/img/washedout.png',
+        category: 'Restaurants',
+        id: '2222',
+      },
+      {
+        name: 'Title 2',
+        note: 'Description here...',
+        photo: 'https://material.angularjs.org/latest/img/washedout.png',
+        category: 'Restaurants',
+        id: '2222',
+      },
+      {
+        name: 'Title 2',
+        note: 'Description here...',
+        photo: 'https://material.angularjs.org/latest/img/washedout.png',
+        category: 'Restaurants',
+        id: '2222',
+      },
     ];
 
     savedPlaces.addPlace = function(opts) {
