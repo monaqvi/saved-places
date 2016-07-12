@@ -25,7 +25,6 @@ angular.module('explore')
         
         function updatePlaceCards(err, data) {
           if (err) return alertNoneFound(data);
-          window.places = data;
           console.log(data.length + ' places found!');
           console.log(data);
 
