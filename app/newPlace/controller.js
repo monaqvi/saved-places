@@ -14,10 +14,10 @@ angular.module('newPlace')
 
       // Take out 'All' (first item) as a valid option
       $scope.categories = categoryList.slice(1);
-      $scope.center = '41.850033,-87.6500523';
 
-      $scope.map = {};
-      $scope.fixSize = function() { google.maps.event.trigger($scope.map, 'resize'); };
+      // $scope.center = '41.850033,-87.6500523';
+      // $scope.map = {};
+      // $scope.fixSize = function() { google.maps.event.trigger($scope.map, 'resize'); };
 
       // NgMap.getMap({id: 'mymap'})
       //      .then(function(map) {
