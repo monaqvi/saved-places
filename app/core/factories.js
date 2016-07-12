@@ -1,11 +1,8 @@
 angular.module('savedPlaces')
   .factory('mainMenu', ['$mdSidenav', function($mdSidenav) {
-    var menu = {
-      isOpen: false,
-    }
+    var menu = {};
 
     menu.toggle = function() {
-      menu.isOpen = !menu.isOpen;
       $mdSidenav('left').toggle();
     };
 

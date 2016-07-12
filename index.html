@@ -46,8 +46,8 @@
       </md-toolbar>
 
       <div flex layout="row" ng-controller="CategoriesCtrl">
-        <md-sidenav md-is-locked-open="mainMenu.isOpen" class="md-whiteframe-z2" md-component-id="left">
-        <div ng-show="mainMenu.isOpen">
+        <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2" md-component-id="left">
+        <div>
           <md-button class="md-raised md-accent left-half" ng-href="/#/{{getActiveView()}}">{{getFirstButtonLabel()}}</md-button>
           <md-button class="md-raised md-primary right-half" ng-click="newCategoryInput.toggle()" ng-href="">Add Category</md-button>
             <form ng-if="newCategoryInput.isActive" name="categoryForm" novalidate ng-submit="categoryForm.$valid && createNewCategory()">
