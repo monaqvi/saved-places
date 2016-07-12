@@ -93,3 +93,8 @@ md-dialog {
 ng-map, #map_canvas {
   min-height: 200px;
 }
+
+md-card-title-media {
+  width: 25%;
+  min-width: 250px;
+}
