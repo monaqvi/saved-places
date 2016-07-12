@@ -2,9 +2,11 @@
 angular.module('explore')
   .component('nearbyPlaces', {
     templateUrl: './app/explore/template.html',
-    controller: ['$scope', '$routeParams', '$timeout', 'geoLocator', 'googlePlaces', 'debounce', 'alertNoneFound', 'resultsRefiner',
-    function ExploreCtrl($scope, $routeParams, $timeout, geoLocator, googlePlaces, debounce, alertNoneFound, resultsRefiner) {
+    controller: ['$scope', '$routeParams', '$timeout', 'geoLocator', 'googlePlaces', 'debounce', 'alertNoneFound', 'resultsRefiner', 'newPlacePrompt',
+    function ExploreCtrl($scope, $routeParams, $timeout, geoLocator, googlePlaces, debounce, alertNoneFound, resultsRefiner, newPlacePrompt) {
       var self = this;
+
+      self.newPlacePrompt = newPlacePrompt.bind(null, $scope);
 
       self.keywords = '';
       self.center = '41.850033,-87.6500523';

@@ -24,7 +24,7 @@
           <p>{{place.address}}</p>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button class="md-icon-button md-36" aria-label="Add Place" ng-disabled="false">
+          <md-button class="md-icon-button md-36" aria-label="Add Place" ng-disabled="false" ng-click="$ctrl.newPlacePrompt(place)">
             <md-icon class="material-icons md-36">&#xE147;</md-icon>
           </md-button>
         </md-card-actions>
@@ -42,7 +42,7 @@
           <p>{{place.address}}</p>
         </md-card-content>
         <md-card-actions layout="row" layout-align="end center">
-          <md-button class="md-icon-button md-36" aria-label="Add Place" ng-disabled="false">
+          <md-button class="md-icon-button md-36" aria-label="Add Place" ng-disabled="false" ng-click="$ctrl.newPlacePrompt(place)">
             <md-icon class="material-icons md-36">&#xE147;</md-icon>
           </md-button>
         </md-card-actions>

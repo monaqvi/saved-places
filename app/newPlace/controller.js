@@ -1,8 +1,6 @@
 angular.module('newPlace')
   .controller('NewPlaceCtrl', ['$scope', '$mdDialog', '$timeout', 'categoryList', 'NgMap', 'savedPlaces', 'place',
     function ($scope, $mdDialog, $timeout, categoryList, NgMap, savedPlaces, place) {
-      console.log(place);
-
       $scope.hide = function() {
         $mdDialog.hide();
       };
@@ -30,14 +28,16 @@ angular.module('newPlace')
       //       1000)
       //      });
 
-      $scope.address = '';
+      $scope.address = place ? place.address : '';
+      $scope.placeName = place ? place.name : '';
+      $scope.placeNote = (place && place.reviews) ? place.reviews.map(function(review) { return review.text; }).join('\n') : '';
       $scope.options = {
         country: 'us',
         // bounds: ''
       };
 
       // Pass detailed data so it can be used here
-      $scope.details = '';
+      $scope.details = place || {};      
 
       // Add data to new place so it can be saved
       $scope.addPlace = function() {
@@ -49,8 +49,8 @@ angular.module('newPlace')
           id: $scope.details.reference,
         };
         savedPlaces.addPlace(newPlaceOpts);
+        $scope.cancel();
       };
-
     }
   ]);
   
