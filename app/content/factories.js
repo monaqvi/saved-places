@@ -1,9 +1,15 @@
 angular.module('content')
   .factory('savedPlaces', [function() {
-    var savedPlaces = {};
-
-    savedPlaces.even = [];
-    savedPlaces.odd = [];
+    var savedPlaces = [
+      {
+        name: 'Test',
+        category: 'Bars',
+      },
+      {
+        name: 'Test',
+        category: 'Restaurants',
+      },
+    ];
 
     savedPlaces.addPlace = function(opts) {
       if (!opts) return;
@@ -15,10 +21,8 @@ angular.module('content')
         category: opts.category,
         id: opts.id,
       };
-
-      var addTo = this.even.length > this.odd.length ? this.odd : this.even;
-
-      addTo.push(newPlace);
+      
+      this.push(newPlace);
 
     };
 
