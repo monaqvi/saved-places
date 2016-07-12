@@ -5,7 +5,7 @@ angular.module('newPlace')
 
       $mdDialog.show({
         controller: 'NewPlaceCtrl',
-        templateUrl: './app/newPlace/newPlaceTest.html',
+        templateUrl: './app/newPlace/newPlacePrompt.html',
         parent: angular.element(document.body),
         // targetEvent: ev,
         clickOutsideToClose:true,

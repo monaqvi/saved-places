@@ -9,11 +9,6 @@ angular.module('savedPlaces')
         controllerAs: 'content',
         activeView: 'places'
       })
-      .when('/newPlace', {
-        templateUrl: './app/newPlace/newPlacePrompt.html',
-        controller: 'NewPlaceCtrl',
-        activeView: 'places'
-      })
       .when('/places/:placeId', {
         templateUrl: './app/edit/template.html',
         controller: 'EditPlaceCtrl'
