@@ -38,9 +38,6 @@ angular.module('categories')
   .factory('categoryList', [function() {
     var categoryList = [
       'All',
-      'Bars',
-      'Coffee Shops',
-      'Restaurants',
     ];
 
     categoryList.add = function(category) {
