@@ -8,7 +8,9 @@ Find your favorite locations, categorize them, and write notes about them so you
 - [Angular](https://angularjs.org/)
 
 ## Usage
-You'll need API keys for [Google Places](https://developers.google.com/places/web-service/get-api-key). Create a file in the 'app/api/' folder called 'keys.js'. Using 'keys.example.js' as a template, add your Google Places API key here. 
+You'll need API keys for [Google Places](https://developers.google.com/places/web-service/get-api-key). Create a file in the 'app/api/' folder called 'keys.js'. Using 'keys.example.js' as a template, add your Google Places API key here.
+
+If you neglect to do this step, the app will prompt you for your individual key.
 
 ## Requirements
 
@@ -23,13 +25,13 @@ From within the root directory:
 
 ```
 npm install -g bower http-server
+bower install
 ```
 
 ### Running Locally
 
-In a separate shell, start the server by running:
+Start the server by running:
 ```
-bower install
 http-server .
 ```
 
