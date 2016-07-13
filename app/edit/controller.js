@@ -1,9 +1,8 @@
 angular.module('edit')
-  .controller('EditPlaceCtrl', ['$scope', '$routeParams', '$mdDialog', 'categoryList', 'savedPlaces',
-    function ($scope, $routeParams, $mdDialog, categoryList, savedPlaces) {
+  .controller('EditPlaceCtrl', ['$scope', '$routeParams', '$location', '$mdDialog', 'categoryList', 'savedPlaces',
+    function ($scope, $routeParams, $location, $mdDialog, categoryList, savedPlaces) {
       var placeIndex = $routeParams.placeId;
-      var activePlace = savedPlaces[placeIndex];
-
+      var activePlace = savedPlaces[placeIndex] || $location.path('/#/places');
 
       $scope.categories = categoryList.slice(1);
       $scope.address = activePlace.address;
