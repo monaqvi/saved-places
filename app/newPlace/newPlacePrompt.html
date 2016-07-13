@@ -37,7 +37,7 @@
               </md-input-container>
               <md-input-container class="md-block" flex-gt-sm>
                 <label>Category</label>
-                <md-select required ng-model="placeCategory">
+                <md-select required ng-model="placeCategory" aria-label="Categories">
                   <md-option ng-repeat="category in categories" value="{{category}}">
                     {{category}}
                   </md-option>
