@@ -3,6 +3,7 @@
 Find your favorite locations, categorize them, and write notes about them so you can easily refer to them later!
 
 ## Overview
+[![Demo](https://github.com/smnaqvi89/saved-places/blob/master/demo.gif)](https://github.com/smnaqvi89/saved-places/)
 
 ### Tech Stack
 - [Angular](https://angularjs.org/)
